@@ -1,0 +1,93 @@
+/* Primary stylesheet for site theme*/
+
+.left{
+	float:left;
+}
+.right{
+	float: right;
+}
+.center{
+	margin: 0 auto 0 auto;
+}
+.center-text{
+	text-align: center;
+}
+.clear{
+	clear: both;
+}
+h1{
+	font-family: "Montserrat", sans-serif;
+	font-size: 3rem;
+	font-weight: 700;
+	color: #fff;
+}
+.page_wrap{
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	background: rgba(235, 231, 63, 0.88);
+}
+.page{
+	width: 1024px;
+	position: relative;
+}
+#menu_icon{
+	position: absolute;
+	top: 15px;
+	right: 0px;
+	display: block;
+}
+
+#promo_headline{
+	width: 600px;
+	margin-top:180px;
+	top: 100px;
+	line-height: 1.2;
+}
+#searchbox{
+	width: 996px;
+	height: 36px;
+	background-color: #fff;
+	padding: 15px;
+	border-radius: 4px;
+	margin-top: 100px;
+}
+#search-bar{
+	width: 73%;
+	height: 30px;
+	font-family: inherit;
+	font-weight: 100;
+	font-size: 16px;
+	margin: 0px 30px 0px 30px;
+	background-color: #EFEFEF;
+	border: 1px solid #EFEFEF;
+	border-radius: 3px;
+	padding-left: 10px;
+	color: #ccc;
+}
+#search-bar:focus{
+	border: 1px solid #EBE73F;
+	color: #000;
+	outline: none;
+}
+#footer_wrap{
+	width: 100%;
+	height: 30px;
+	padding: 10px 0px 10px 0px;
+	background: #fff;
+	position: absolute;
+	bottom: 0px;
+}
+#copyright{
+	margin: 10px 0px 10px 0px;
+	font-family: sans-serif;
+	color: #ccc;
+	font-size: 12px;
+}
+#map-canvas { 
+	height: 100vh; 
+	z-index: -1;
+	width: 100%;
+	margin: 0; 
+	padding: 0;
+}
