@@ -70,14 +70,19 @@ h2{
 	display: block;
 	z-index: 10;
 }
-#menu-wrap{
+#menu_wrap{
 	width: 300px;
 	height:100vh;
 	position: absolute;
-	right: -300px;
 	top: 0px;
 	background-color: #f8f8f8;
 	z-index: 9;
+}
+.menu-closed{
+	right: -300px;
+}
+.menu-opened{
+	right: 0px;
 }
 .header-logo{
     margin-top: 12px;
@@ -129,14 +134,14 @@ h2{
 	color: #ccc;
 	font-size: 12px;
 }
-#map-canvas { 
+.map-canvas { 
 	height: 100vh; 
 	z-index: -1;
 	width: 100%;
 	margin: 0; 
 	padding: 0;
 }
-#map-canvas-short{
+.map-canvas-short{
 	height:300px;
 	width: 100%;
 	margin: 0; 
@@ -198,3 +203,4 @@ h2{
 #results-wrap{
 	margin-top: 30px;
 }
+

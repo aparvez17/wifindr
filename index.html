@@ -10,10 +10,10 @@
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     	<script type="text/javascript" src="js/map.js"></script>
-    	<script type="text/javascript" src="js/menu.js"></script>
 	</head>
 	<body>
-		<div id="menu-wrap"></div>
+
+		<div id="menu_wrap" class="menu-closed" active="0"></div>
 		<div class="page_wrap">		
 			<div class="page center">
 
@@ -32,12 +32,13 @@
 				</div>
 			</div>
 		</div>
-		<div id="map-canvas"></div>
+		<div id="map-canvas" class="map-canvas"></div>
 		<div id="footer_wrap">
 			<div id="footer" class="page center">
 				<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
 				<p id="copyright" class="right">&copy; wiFindr 2015</p>
 			</div>
 		</div>
+		<script type="text/javascript" src="js/menu.js"></script>
 	</body>
 </html>
