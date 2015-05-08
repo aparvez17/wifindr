@@ -1,5 +1,8 @@
 /* Primary stylesheet for site theme*/
-
+body{
+	background-color: #f8f8f8;
+	overflow-x: hidden;
+}
 .left{
 	float:left;
 }
@@ -37,6 +40,9 @@ h2{
 	width: 1024px;
 	position: relative;
 }
+.halfpage{
+	width:50%;
+}
 .yellow_bg{
     background-color: rgba(235, 231, 63, 1);
 }
@@ -62,6 +68,16 @@ h2{
 	top: 18px;
 	right: 0px;
 	display: block;
+	z-index: 10;
+}
+#menu-wrap{
+	width: 300px;
+	height:100vh;
+	position: absolute;
+	right: -300px;
+	top: 0px;
+	background-color: #f8f8f8;
+	z-index: 9;
 }
 .header-logo{
     margin-top: 12px;
@@ -89,13 +105,13 @@ h2{
 	font-size: 16px;
 	margin: 0px 30px 0px 30px;
 	background-color: #EFEFEF;
-	border: 1px solid #EFEFEF;
+	border: 2px solid #EFEFEF;
 	border-radius: 3px;
 	padding-left: 10px;
 	color: #ccc;
 }
 #search-bar:focus{
-	border: 1px solid #EBE73F;
+	border: 2px solid #EBE73F;
 	color: #000;
 	outline: none;
 }
@@ -120,18 +136,65 @@ h2{
 	margin: 0; 
 	padding: 0;
 }
-#registration input{
+#map-canvas-short{
+	height:300px;
+	width: 100%;
+	margin: 0; 
+	padding: 0;
+
+}
+#registration input[type=text], #registration input[type=password]{
     display: block;
     width: 400px;
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
     padding: 10px;
     border-radius: 3px;
-    border: 1px solid #ccc;
+    border: 1px solid #fff;
     height: 30px;
     margin: 15px 0px 15px 0px;
 }
 #registration input:focus{
     outline: 0px;
-    border: 1px solid #EBE73F;
+    border: 1px solid #B3A647;
+}
+#registration input[type=submit]{
+	width:421px;
+	padding: 20px;
+	text-align: center;
+	background-color: #EBE73F;
+	font: 14px "Montserrat", sans-serif;
+	color: #fff;
+	border:3px solid #fff;
+	border-radius: 3px;
+}
+#registration input[type=submit]:hover{
+	background-color:#F74B4B;
+}
+.register-heading{
+	padding: 60px 0px 0px 0px;
+}
+.register-wrap{
+	width:422px;
+}
+.result{
+	padding: 20px;
+	height: 200px;
+	width: 192px;
+	float: left;
+	background-color: #EBE73F;
+	color: #fff;
+	font-family: "Montserrat", sans-serif;
+	margin: 10px;
+	border-radius: 4px;
+	border: 1px solid #D5D12E;
+	border-bottom: 3px solid #D5D12E;
+}
+.result:hover{
+	background-color: #F27A45;
+	border: 1px solid #C75F31;
+	border-bottom: 3px solid #C75F31;
+}
+#results-wrap{
+	margin-top: 30px;
 }

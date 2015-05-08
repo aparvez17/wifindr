@@ -10,15 +10,15 @@
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="js/map.js"></script>
     </head>
-    <body>
+    <body class="yellow_bg">
         <div id="header_wrap" class="yellow_bg">
             <div id="header" class="center">
-                <img src="images/logo/logo_white.png" class="left header-logo">
+                <a href="index.html"><img src="images/logo/logo_white.png" class="left header-logo"></a>
                 <a id="menu_icon" class="right" href="javscript:void(0)"><img src="images/icons/menu_icon.png"/></a>
             </div>
         </div>
-        <div class="page center padding30">
-            <h2>Sign Up!</h2>
+        <h1 class="center-text register-heading">Join the Free Wi-Fi Revolution</h1>
+        <div class="register-wrap center padding30">
             <form id="registration" method="post">
                 <input type="text" placeholder="Name"/>
                 <input type="text" placeholder="Email"/>
@@ -26,6 +26,12 @@
                 <input type="password" placeholder="Re-Type Password" />
                 <input type="submit" value="Sign Up!" />
             </form>
+        </div>
+        <div id="footer_wrap">
+            <div id="footer" class="page center">
+                <img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
+                <p id="copyright" class="right">&copy; wiFindr 2015</p>
+            </div>
         </div>
     </body>
 </html>
