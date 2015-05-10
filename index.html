@@ -12,33 +12,47 @@
     	<script type="text/javascript" src="js/map.js"></script>
 	</head>
 	<body>
+		<div class="wrapper">
+			<nav id="menu_wrap" class="menu-closed" active="0">
+				<h3 class="center-text padding30">MENU</h3>
+				<ul>
+					<li>Log in</li>
+					<a href="register.html"><li>Create an account</li></a>
+					<li>Learn More</li>
+					<li>Privacy</li>
+					<li>Terms</li>
+				</ul>
+			</nav>
+			<div id="content">
+				<div class="page_wrap">		
+					<div class="page center">
 
-		<div id="menu_wrap" class="menu-closed" active="0"></div>
-		<div class="page_wrap">		
-			<div class="page center">
+						<a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png"/></a>
 
-				<a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png"/></a>
+						<br class="clear">
 
-				<br class="clear">
+						<div id="promo_headline" class="center">
+							<h1 class="center-text">We know you're only here for the free Wi-Fi</h1>
+						</div>
 
-				<div id="promo_headline" class="center">
-					<h1 class="center-text">We know you're only here for the free Wi-Fi</h1>
+						<div id="searchbox" class="page">
+							<img class="left" src="images/logo/logo_black.png" alt="wiFindr - Find free wi-fi near you" />
+							<input type="text" id="search-bar" class="left" placeholder="Enter your location to find free Wi-Fi"></input>
+							<a href="javascript:void(0)"><img src="images/icons/location_icon.png"></a>
+						</div>
+					</div>
 				</div>
-
-				<div id="searchbox" class="page">
-					<img class="left" src="images/logo/logo_black.png" alt="wiFindr - Find free wi-fi near you" />
-					<input type="text" id="search-bar" class="left" placeholder="Enter your location to find free Wi-Fi"></input>
-					<a href="javascript:void(0)"><img src="images/icons/location_icon.png"></a>
+			</div>
+			<div id="footer_wrap">
+				<div id="footer" class="page center">
+					<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
+					<p id="copyright" class="right">&copy; wiFindr 2015</p>
 				</div>
 			</div>
 		</div>
 		<div id="map-canvas" class="map-canvas"></div>
-		<div id="footer_wrap">
-			<div id="footer" class="page center">
-				<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
-				<p id="copyright" class="right">&copy; wiFindr 2015</p>
-			</div>
-		</div>
+
+
 		<script type="text/javascript" src="js/menu.js"></script>
 	</body>
 </html>

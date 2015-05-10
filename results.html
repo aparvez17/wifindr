@@ -10,28 +10,49 @@
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     	<script type="text/javascript" src="js/map.js"></script>
-    	<script type="text/javascript" src="js/menu.js"></script>
 	</head>
 	<body>
-		<div id="header_wrap" class="yellow_bg">
-            <div id="header" class="center">
-                <a href="index.html"><img src="images/logo/logo_white.png" class="left header-logo"></a>
-                <a id="menu_icon" class="right" href="javscript:void(0)"><img src="images/icons/menu_icon.png"/></a>
-            </div>
-        </div>
-        <div id="map-canvas" class="map-canvas-short"></div>
-        <div class="page center padding30">
-        	<h2>We found 23 Hotspots near you</h2>
-        	<div id="results-wrap">
-	        	<div class="result">1st Result</div>
-	        	<div class="result">2nd Result</div>
-	        	<div class="result">3rd Result</div>
-	        	<div class="result">4th Result</div>
-	        	<div class="result">5th Result</div>
-	        	<div class="result">6th Result</div>
-	        	<div class="result">7th Result</div>
-	        	<div class="result">8th Result</div>
-        	</div>
-        </div>
+		<div id="wrapper">
+			<nav id="menu_wrap" class="menu-closed" active="0">
+				<h3 class="center-text padding30">MENU</h3>
+				<ul>
+					<li>Log in</li>
+					<a href="register.html"><li>Create an account</li></a>
+					<li>Learn More</li>
+					<li>Privacy</li>
+					<li>Terms</li>
+				</ul>
+			</nav>
+			<div id="header_wrap" class="yellow_bg">
+	            <div id="header" class="center">
+	                <a href="index.html"><img src="images/logo/logo_white.png" class="left header-logo"></a>
+	                <a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png"/></a>
+	            </div>
+	        </div>
+	        <div id="content">
+		        <div id="map-canvas" class="map-canvas-short"></div>
+		        <div class="page center padding30">
+		        	<h2>We found 23 Hotspots near you</h2>
+		        	<div id="results-wrap">
+			        	<div class="result">1st Result</div>
+			        	<div class="result">2nd Result</div>
+			        	<div class="result">3rd Result</div>
+			        	<div class="result">4th Result</div>
+			        	<div class="result">5th Result</div>
+			        	<div class="result">6th Result</div>
+			        	<div class="result">7th Result</div>
+			        	<div class="result">8th Result</div>
+		        	</div>
+		        </div>
+		    </div>
+	       	<div id="footer_wrap">
+				<div id="footer" class="page center">
+					<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
+					<p id="copyright" class="right">&copy; wiFindr 2015</p>
+				</div>
+			</div>
+	    </div>
+
+        <script type="text/javascript" src="js/menu.js"></script>
 	</body>
 </html>

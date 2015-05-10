@@ -1,4 +1,4 @@
-#search-bar, #registration input, .result, #menu_wrap, body{
+#search-bar, #registration input, .result, #menu_wrap, body, #menu_wrap ul li{
 	-webkit-transition: all 0.2s ease-in-out;
   	-moz-transition: all 0.2s ease-in-out;
   	-o-transition: all 0.2s ease-in-out;

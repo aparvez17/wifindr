@@ -2,6 +2,14 @@
 body{
 	background-color: #f8f8f8;
 	overflow-x: hidden;
+	height: 100%;
+}
+#wrapper{
+	min-height: 100vh;
+	position: relative;
+}
+#content{
+   padding-bottom:70px;
 }
 .left{
 	float:left;
@@ -23,12 +31,17 @@ h1{
 	font-size: 3rem;
 	font-weight: 700;
 	color: #fff;
+	margin: 20px 0px 20px 0px;
 }
 h2{
     font-family: "Montserrat", sans-serif;
     font-size: 2em;
     font-weight: 700;
     color: #333;
+    margin: 10px 0px 10px 0px;
+}
+h3{
+
 }
 .page_wrap{
 	width: 100%;
@@ -55,6 +68,9 @@ h2{
 .padding50{
     padding: 50px;
 }
+.100wrap{
+	width: 100%;
+}
 #header_wrap{
     height: 60px;
     width: 100%;
@@ -77,6 +93,24 @@ h2{
 	top: 0px;
 	background-color: #f8f8f8;
 	z-index: 9;
+	box-shadow: -3px 0px 3px rgba(0, 0, 0, 0.1);
+}
+#menu_wrap ul{
+	border-top: 1px dashed #ccc;
+}
+#menu_wrap ul li{
+	width: 100%;
+	text-align: center;
+	padding: 20px 0px 20px 0px;
+	font-family: "Montserrat", sans-serif;
+	color: #ccc;
+	border-bottom: 1px dashed #ccc;
+	margin-top: -1px;
+}
+#menu_wrap ul li:hover{
+	background-color:#F74B4B;
+	border-bottom: 1px solid #D52E2E;
+	color: #fff;
 }
 .menu-closed{
 	right: -300px;
@@ -90,7 +124,7 @@ h2{
 
 #promo_headline{
 	width: 600px;
-	margin-top:180px;
+	margin-top:130px;
 	top: 100px;
 	line-height: 1.2;
 }
@@ -127,6 +161,7 @@ h2{
 	background: #fff;
 	position: absolute;
 	bottom: 0px;
+	left:0px;
 }
 #copyright{
 	margin: 10px 0px 10px 0px;
@@ -135,9 +170,11 @@ h2{
 	font-size: 12px;
 }
 .map-canvas { 
-	height: 100vh; 
+	height: 100vh;
 	z-index: -1;
 	width: 100%;
+	position: absolute;
+	top: 0px;
 	margin: 0; 
 	padding: 0;
 }
@@ -146,9 +183,13 @@ h2{
 	width: 100%;
 	margin: 0; 
 	padding: 0;
-
 }
-#registration input[type=text], #registration input[type=password]{
+.map-canvas-small{
+	height: 200px;
+	width:400px;
+	margin: 30px 0px 30px 0px;
+}
+#registration input[type=text], #registration input[type=email], #registration input[type=password]{
     display: block;
     width: 400px;
     font-size: 16px;
@@ -177,7 +218,7 @@ h2{
 	background-color:#F74B4B;
 }
 .register-heading{
-	padding: 60px 0px 0px 0px;
+	padding: 20px 0px 0px 0px;
 }
 .register-wrap{
 	width:422px;
@@ -185,8 +226,8 @@ h2{
 .result{
 	padding: 20px;
 	height: 200px;
-	width: 192px;
-	float: left;
+	width: 190px;
+	display: inline-block;
 	background-color: #EBE73F;
 	color: #fff;
 	font-family: "Montserrat", sans-serif;
@@ -203,4 +244,48 @@ h2{
 #results-wrap{
 	margin-top: 30px;
 }
-
+#hotspot_title{
+	padding: 20px 40px 0px 40px;
+	height:100px;
+	background-color: #222222;
+}
+#hotspot_title, #hotspot_title h2{
+	color: #fff;
+}
+.user-review:nth-of-type(1){
+	margin-top: 30px;
+}
+.user-review{
+	padding: 30px;
+	margin: 15px 0px 15px 0px;
+	background-color: #EBE73F;
+	border-radius: 3px;
+	position: relative;
+	min-height: 76px;
+}
+.user-review p{
+	margin-top: 7px;
+	line-height: 1.4em;
+	font-size: 0.9em;
+	width: 70%;
+}
+.user-rating{
+	height:auto;
+	float: right;
+	width: 25%;
+}
+.user-rating h2{
+	font-family: "Open Sans",sans-serif;
+	font-weight: 100;
+	font-size: 3em;
+	margin-top: 20px;
+}
+.timestamp{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	padding: 3px 20px 3px 20px;
+	background-color: #D3D033;
+	color: #fff;
+	font-size: 0.8em;
+}
