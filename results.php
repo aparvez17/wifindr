@@ -1,3 +1,27 @@
+<?php
+include 'dbconnect.inc';
+$selected_suburb = $_POST['select_suburb'];
+$search_word = $_POST['search_bar'];
+$clean_suburb = preg_replace('/[0-9,]+/', '', $selected_suburb);
+
+
+if($selected_suburb = ""){
+	$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
+	$hotspots->bindValue(':searched', $searched_word);
+}
+else{
+	$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb = :clean_suburb OR suburb = :selected_suburb');
+	$hotspots->bindValue(':clean_suburb', $clean_suburb);
+	$hotspots->bindValue(':selected_suburb', $selected_suburb);
+	echo $selected_suburb;
+}
+
+
+$hotspots->execute();
+
+$hot_count = $hotspots->rowCount();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -25,23 +49,32 @@
 			</nav>
 			<div id="header_wrap" class="yellow_bg">
 	            <div id="header" class="center">
-	                <a href="index.html"><img src="images/logo/logo_white.png" class="left header-logo"></a>
+	                <a href="index.php"><img src="images/logo/logo_white.png" class="left header-logo"></a>
 	                <a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png"/></a>
 	            </div>
 	        </div>
 	        <div id="content">
 		        <div id="map-canvas" class="map-canvas-short"></div>
 		        <div class="page center padding30">
-		        	<h2>We found 23 Hotspots near you</h2>
+		        	<h2>We found <?php 
+		        	if($hot_count > 1){
+		        		echo $hot_count," Hotspots in ", $clean_suburb,"</h2>";
+		        	}
+		        	else{
+		        		echo $hot_count," Hotspot in ", $clean_suburb,"</h2>";
+		        	}
+		        	?>
+		        	
 		        	<div id="results-wrap">
-			        	<div class="result">1st Result</div>
-			        	<div class="result">2nd Result</div>
-			        	<div class="result">3rd Result</div>
-			        	<div class="result">4th Result</div>
-			        	<div class="result">5th Result</div>
-			        	<div class="result">6th Result</div>
-			        	<div class="result">7th Result</div>
-			        	<div class="result">8th Result</div>
+		        		<?php
+		        		foreach($hotspots as $hotspot){
+		        			$clean_suburb = preg_replace('/[0-9,]+/', '', $hotspot['suburb']);
+		        			echo '<div class="result">',$hotspot['name'],
+		        			'',$hotspot['address'],
+		        			'',$clean_suburb,'</div>';
+		        		}
+
+		        		?>
 		        	</div>
 		        </div>
 		    </div>

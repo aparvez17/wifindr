@@ -130,24 +130,41 @@ h3{
 }
 #searchbox{
 	width: 996px;
-	height: 36px;
+	height: 50px;
 	background-color: #fff;
 	padding: 15px;
 	border-radius: 4px;
 	margin-top: 100px;
 }
+#searchbox img{
+	margin-top: 8px;
+}
+#searchbox input[type=image]{
+	outline: none;
+	margin-top: 8px;
+}
 #search-bar{
 	width: 73%;
-	height: 30px;
+	height: 43px;
 	font-family: inherit;
 	font-weight: 100;
-	font-size: 16px;
+	font-size: 18px;
 	margin: 0px 30px 0px 30px;
-	background-color: #EFEFEF;
+	background-color: #ECECEC;
 	border: 2px solid #EFEFEF;
 	border-radius: 3px;
 	padding-left: 10px;
 	color: #ccc;
+}
+#select_suburb{
+	border: 1px solid #ccc;
+	background-color: #F5F5F5;
+	border-radius: 3px;
+	position: relative; 
+	top: -41px; 
+	left: -88px;
+	padding: 8px; 
+	width:300px;
 }
 #search-bar:focus{
 	border: 2px solid #EBE73F;

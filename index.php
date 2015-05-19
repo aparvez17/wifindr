@@ -1,3 +1,10 @@
+<?php
+include 'dbconnect.inc';
+
+$suburbs = $pdo->prepare('SELECT DISTINCT suburb from hotspots');
+$suburbs->execute();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -37,8 +44,20 @@
 
 						<div id="searchbox" class="page">
 							<img class="left" src="images/logo/logo_black.png" alt="wiFindr - Find free wi-fi near you" />
-							<input type="text" id="search-bar" class="left" placeholder="Enter your location to find free Wi-Fi"></input>
-							<a href="javascript:void(0)"><img src="images/icons/location_icon.png"></a>
+							<form action="results.php" method="POST">
+								<input type="text" id="search-bar" name="search_bar" class="left" placeholder="Enter a location to find free Wi-Fi">
+								<select id="select_suburb" name="select_suburb" class="right" >
+									<option value="">or Select a Suburb</option>
+									<?php
+									foreach($suburbs as $suburb){
+										$clean_suburb = preg_replace('/[0-9,]+/', '', $suburb['suburb']);
+										echo '<option value="',$suburb['suburb'],'">',$clean_suburb,'</option>';
+									}
+									?>
+								</select>
+								
+								<input type="image" src="images/icons/location_icon.png" />
+							</form>
 						</div>
 					</div>
 				</div>
