@@ -1,9 +1,20 @@
 <?php
 include 'dbconnect.inc';
+try{
+	$suburbs = $pdo->query('SELECT DISTINCT suburb from hotspots');
+}
+catch (PDOException $e){
+	echo $e->getMessage();
+} 
 
-$suburbs = $pdo->prepare('SELECT DISTINCT suburb from hotspots');
-$suburbs->execute();
+$sub_list = [];
+foreach ($suburbs as $suburb){
+	$clean_suburb = trim(preg_replace('/[0-9,]+/', '', $suburb['suburb']));
+	array_push($sub_list, $clean_suburb);
+}
+$sub_list = array_unique($sub_list);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,9 +60,8 @@ $suburbs->execute();
 								<select id="select_suburb" name="select_suburb" class="right" >
 									<option value="">or Select a Suburb</option>
 									<?php
-									foreach($suburbs as $suburb){
-										$clean_suburb = preg_replace('/[0-9,]+/', '', $suburb['suburb']);
-										echo '<option value="',$suburb['suburb'],'">',$clean_suburb,'</option>';
+									foreach($sub_list as $sub){
+										echo '<option value="',$sub,'">',$sub,'</option>';
 									}
 									?>
 								</select>

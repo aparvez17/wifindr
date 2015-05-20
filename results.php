@@ -2,20 +2,17 @@
 include 'dbconnect.inc';
 $selected_suburb = $_POST['select_suburb'];
 $search_word = $_POST['search_bar'];
-$clean_suburb = preg_replace('/[0-9,]+/', '', $selected_suburb);
 
-
-if($selected_suburb = ""){
-	$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
-	$hotspots->bindValue(':searched', $searched_word);
+if ($search_word == ""){
+$searched = $selected_suburb;
+$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
+$hotspots->bindValue(':searched', "%".$searched."%");
 }
 else{
-	$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb = :clean_suburb OR suburb = :selected_suburb');
-	$hotspots->bindValue(':clean_suburb', $clean_suburb);
-	$hotspots->bindValue(':selected_suburb', $selected_suburb);
-	echo $selected_suburb;
+$searched = $search_word;
+$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
+$hotspots->bindValue(':searched', "%".$searched."%");
 }
-
 
 $hotspots->execute();
 
@@ -56,12 +53,15 @@ $hot_count = $hotspots->rowCount();
 	        <div id="content">
 		        <div id="map-canvas" class="map-canvas-short"></div>
 		        <div class="page center padding30">
-		        	<h2>We found <?php 
+		        	<h2><?php 
 		        	if($hot_count > 1){
-		        		echo $hot_count," Hotspots in ", $clean_suburb,"</h2>";
+		        		echo "We found ",$hot_count," hotspots in ", $searched,"</h2>";
+		        	}
+		        	if($hot_count == 0){
+		        		echo "We couldn't find any hotspots in ", $searched,"</h2>";
 		        	}
 		        	else{
-		        		echo $hot_count," Hotspot in ", $clean_suburb,"</h2>";
+		        		echo "We found ",$hot_count," hotspot in ", $searched,"</h2>";
 		        	}
 		        	?>
 		        	
@@ -69,16 +69,16 @@ $hot_count = $hotspots->rowCount();
 		        		<?php
 		        		foreach($hotspots as $hotspot){
 		        			$clean_suburb = preg_replace('/[0-9,]+/', '', $hotspot['suburb']);
-		        			echo '<div class="result">',$hotspot['name'],
-		        			'',$hotspot['address'],
-		        			'',$clean_suburb,'</div>';
+		        			echo '<a href="hotspot.php?id=',$hotspot['id'],'" class="result">',$hotspot['name'],
+		        			'<br/><br/>',$hotspot['address'],
+		        			'<br/>',$clean_suburb,'</a>';
 		        		}
 
 		        		?>
 		        	</div>
 		        </div>
 		    </div>
-	       	<div id="footer_wrap">
+	       	<div id="footer_scroll_wrap">
 				<div id="footer" class="page center">
 					<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
 					<p id="copyright" class="right">&copy; wiFindr 2015</p>

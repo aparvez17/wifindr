@@ -7,7 +7,7 @@ function menu(){
 		menu.setAttribute("active", "1");
 	}
 	else if(menu.getAttribute("active") == "1"){
-		menu.style.right = "-300px";
+		menu.style.right = "-310px";
 		body.style.left = "0px";
 		menu.setAttribute("active", "0");
 	}

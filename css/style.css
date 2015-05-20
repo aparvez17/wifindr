@@ -113,7 +113,7 @@ h3{
 	color: #fff;
 }
 .menu-closed{
-	right: -300px;
+	right: -310px;
 }
 .menu-opened{
 	right: 0px;
@@ -171,11 +171,13 @@ h3{
 	color: #000;
 	outline: none;
 }
-#footer_wrap{
+#footer_wrap, #footer_scroll_wrap{
 	width: 100%;
 	height: 30px;
 	padding: 10px 0px 10px 0px;
 	background: #fff;
+}
+#footer_wrap{
 	position: absolute;
 	bottom: 0px;
 	left:0px;
@@ -244,7 +246,7 @@ h3{
 	padding: 20px;
 	height: 200px;
 	width: 190px;
-	display: inline-block;
+	float:left;
 	background-color: #EBE73F;
 	color: #fff;
 	font-family: "Montserrat", sans-serif;
@@ -260,14 +262,19 @@ h3{
 }
 #results-wrap{
 	margin-top: 30px;
+	overflow: auto;
 }
 #hotspot_title{
 	padding: 20px 40px 0px 40px;
-	height:100px;
+	min-height:130px;
 	background-color: #222222;
 }
 #hotspot_title, #hotspot_title h2{
 	color: #fff;
+}
+#hotspot_title h3{
+	max-width: 600px;
+	line-height: 1.5;
 }
 .user-review:nth-of-type(1){
 	margin-top: 30px;
