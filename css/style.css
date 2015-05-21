@@ -133,6 +133,33 @@ h3{
 .menu-opened{
 	right: 0px;
 }
+#login{
+	text-align: center;
+	height: 0px;
+	overflow: hidden;
+}
+#login form{
+	margin-top: 25px;
+}
+#login input{
+	width: 80%;
+	height: 30px;
+	padding: 7px;
+	margin: 7px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	outline: 0px;
+}
+#login input:focus{
+	border: 1px solid #333;
+}
+#login input[type=submit]{
+	color: #fff;
+	background-color: #F74B4B;
+	border: 1px solid #D52E2E;
+	width: 50%;
+	height: 40px;
+}
 .header-logo{
     margin-top: 12px;
 }

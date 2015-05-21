@@ -17,3 +17,14 @@ function menu(){
 		icon.style.visibility = "visible";
 	}
 }
+function login(){
+	var login = document.getElementById("login");
+	if(login.getAttribute("open") == "0"){
+		login.style.height = "220px";
+		login.setAttribute("open", "1");
+	}
+	else{
+		login.style.height = "0px";
+		login.setAttribute("open", "0");
+	}
+}

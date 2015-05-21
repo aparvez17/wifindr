@@ -17,7 +17,14 @@
                 <a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png"/></a>
                 <h3 class="center-text padding30">MENU</h3>
                 <ul>
-                    <li>Log in</li>
+                    <li onclick="login()">Log in</li>
+                    <div id="login" open="0">
+                        <form>
+                            <input type="text" placeholder="Email" />
+                            <input type="password" placeholder="Password" />
+                            <input type="submit" value="Login" />
+                        </form>
+                    </div>
                     <a href="register.html"><li>Create an account</li></a>
                     <li>Learn More</li>
                     <li>Privacy</li>
