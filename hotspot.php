@@ -14,6 +14,16 @@ $hotspot_data->bindValue(':id', $h_id);
 $hotspot_data->execute();
 $hotspot_data = $hotspot_data -> fetch();
 
+try{
+	$review_data = $pdo->prepare('SELECT * FROM reviews WHERE hotspot_id=:id ORDER BY date desc');
+	$review_data->bindValue(':id', $h_id);
+}
+catch (PDOException $e){
+	echo $e->getMessage();
+} 
+$review_data->execute();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +84,28 @@ $hotspot_data = $hotspot_data -> fetch();
 
 		        <div class="page center padding30">
 		        	<h2>User Reviews</h2>
+		        	
+		        	<?php
+		        		foreach($review_data as $review){
+		        			echo "<div class='user-review'>
+		        					<div class='user-rating center-text'>
+		        					<h2>",$review['rating'],"/5</h2>
+		        					</div>
+		        					<h3>",$review['name'],"</h3>
+		        					<p>",$review['review_text'],"</p>
+		        					<div class='timestamp'>",$review['date'],"</div>
+		        					</div>";
+		        		}    
+		        	?>
+					<!--<div class="user-review">
+		        		<div class="user-rating center-text">
+		        			<h2>4.5/5</h2>
+		        		</div>
+		        		<h3>Asad Parvez</h3>
+		        		<p>You are expected to complete Part 2 - Server side design and implementation using PHP and MySQL in the second half of the semester.  The whole project is expected to be completed at the end of week12 and you will demo your website to your tutor in Week12 Practical class.
+		        		</p>
+		        		<div class="timestamp">10 May 2015</div>
+		        	</div>
 		        	<div class="user-review">
 		        		<div class="user-rating center-text">
 		        			<h2>4.5/5</h2>
@@ -82,25 +114,7 @@ $hotspot_data = $hotspot_data -> fetch();
 		        		<p>You are expected to complete Part 2 - Server side design and implementation using PHP and MySQL in the second half of the semester.  The whole project is expected to be completed at the end of week12 and you will demo your website to your tutor in Week12 Practical class.
 		        		</p>
 		        		<div class="timestamp">10 May 2015</div>
-		        	</div>
-					<div class="user-review">
-		        		<div class="user-rating center-text">
-		        			<h2>4.5/5</h2>
-		        		</div>
-		        		<h3>Asad Parvez</h3>
-		        		<p>You are expected to complete Part 2 - Server side design and implementation using PHP and MySQL in the second half of the semester.  The whole project is expected to be completed at the end of week12 and you will demo your website to your tutor in Week12 Practical class.
-		        		</p>
-		        		<div class="timestamp">10 May 2015</div>
-		        	</div>
-		        	<div class="user-review">
-		        		<div class="user-rating center-text">
-		        			<h2>4.5/5</h2>
-		        		</div>
-		        		<h3>Asad Parvez</h3>
-		        		<p>You are expected to complete Part 2 - Server side design and implementation using PHP and MySQL in the second half of the semester.  The whole project is expected to be completed at the end of week12 and you will demo your website to your tutor in Week12 Practical class.
-		        		</p>
-		        		<div class="timestamp">10 May 2015</div>
-		        	</div>
+		        	</div>-->
 		        </div>
 		    </div>
 
