@@ -32,6 +32,7 @@ $sub_list = array_unique($sub_list);
 	<body>
 		<div class="wrapper">
 			<nav id="menu_wrap" class="menu-closed" active="0">
+				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png"/></a>
 				<h3 class="center-text padding30">MENU</h3>
 				<ul>
 					<li>Log in</li>

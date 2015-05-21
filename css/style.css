@@ -112,6 +112,21 @@ h3{
 	border-bottom: 1px solid #D52E2E;
 	color: #fff;
 }
+#close_menu{
+	margin-left: 10px;
+	margin-top: 15px;
+	padding: 10px;
+	border: 1px solid transparent;
+	border-radius: 2px;
+}
+#close_menu:hover{
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+#close_menu:active{
+	background-color: rgba(235, 231, 63, 1);
+	border: 1px solid rgba(235, 231, 63, 1);
+}
 .menu-closed{
 	right: -310px;
 }

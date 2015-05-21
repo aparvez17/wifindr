@@ -35,6 +35,7 @@ $hot_count = $hotspots->rowCount();
 	<body>
 		<div id="wrapper">
 			<nav id="menu_wrap" class="menu-closed" active="0">
+				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png"/></a>
 				<h3 class="center-text padding30">MENU</h3>
 				<ul>
 					<li>Log in</li>
@@ -57,11 +58,11 @@ $hot_count = $hotspots->rowCount();
 		        	if($hot_count > 1){
 		        		echo "We found ",$hot_count," hotspots in ", $searched,"</h2>";
 		        	}
-		        	if($hot_count == 0){
-		        		echo "We couldn't find any hotspots in ", $searched,"</h2>";
+		        	else if($hot_count == 1){
+		        		echo "We found 1 hotspot in ", $searched,"</h2>";
 		        	}
 		        	else{
-		        		echo "We found ",$hot_count," hotspot in ", $searched,"</h2>";
+		        		echo "We couldn't find any hotspots in ", $searched,"</h2>";
 		        	}
 		        	?>
 		        	
