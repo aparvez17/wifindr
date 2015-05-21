@@ -7,13 +7,44 @@ catch (PDOException $e){
 	echo $e->getMessage();
 } 
 
-$sub_list = [];
+$sub_list = Array();
 foreach ($suburbs as $suburb){
 	$clean_suburb = trim(preg_replace('/[0-9,]+/', '', $suburb['suburb']));
 	array_push($sub_list, $clean_suburb);
 }
 $sub_list = array_unique($sub_list);
-?>
+
+   if (isset($_POST['username']) and isset($_POST['password'])){
+		//3.1.1 Assigning posted values to variables.
+		$username = $_POST['username'];
+		$password = md5($_POST['password']);
+		//3.1.2 Checking the values are existing in the database or not
+		
+		try{
+			$userdata = $pdo->prepare("SELECT * FROM `user` WHERE email='$username' and password='$password'");
+		}
+		catch (PDOException $e){
+			echo $e->getMessage();
+		} 
+		$userdata->execute();
+		
+		$count = $userdata->rowCount();
+		//3.1.2 If the posted values are equal to the database values, then session will be created for the user.
+		if ($count == 1){
+		$_SESSION['username'] = $username;
+		}else{
+		//3.1.3 If the login credentials doesn't match, he will be shown with an error message.
+		echo "Invalid Login Credentials.";
+		}
+		}
+		//3.1.4 if the user is logged in Greets the user with message
+		if (isset($_SESSION['username'])){
+		$username = $_SESSION['username'];
+		header("Location: index.php");
+		die();
+		}
+
+    ?>
 
 
 <!DOCTYPE html>
@@ -24,10 +55,33 @@ $sub_list = array_unique($sub_list);
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
-		<link href='http://fonts.googl  eapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    	<script type="text/javascript" src="js/map.js"></script>
+		 <style>
+		 #map-canvas {
+			height: 40%;
+			margin-left: 30px;
+			margin-right: 30px;
+			
+		  }
+		</style>
+		<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfHOKpEYRngpFqOITq0YIIm_puZYbPEs4">
+		</script>
+		
+		<script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: -34.397, lng: 150.644},
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+	
+		
 	</head>
 	<body>
 		<div class="wrapper">
@@ -43,7 +97,7 @@ $sub_list = array_unique($sub_list);
 							<input type="submit" value="Login" />
 						</form>
 					</div>
-					<a href="register.html"><li>Create an account</li></a>
+					<a href="register.php"><li>Create an account</li></a>
 					<li>Learn More</li>
 					<li>Privacy</li>
 					<li>Terms</li>
@@ -78,8 +132,11 @@ $sub_list = array_unique($sub_list);
 							</form>
 						</div>
 					</div>
+					<div id="map-canvas"></div>
 				</div>
+				
 			</div>
+			
 			<div id="footer_wrap">
 				<div id="footer" class="page center">
 					<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
