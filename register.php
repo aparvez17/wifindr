@@ -13,6 +13,8 @@
 			echo $e->getMessage();
 		} 
 		$userdata->execute();
+		header("Location: index.php");
+		die();
     }
 	else
 	if (isset($_POST['username']) and isset($_POST['password'])){
