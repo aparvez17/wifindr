@@ -57,30 +57,9 @@ $sub_list = array_unique($sub_list);
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-		 <style>
-		 #map-canvas {
-			height: 40%;
-			margin-left: 30px;
-			margin-right: 30px;
-			
-		  }
-		</style>
 		<script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfHOKpEYRngpFqOITq0YIIm_puZYbPEs4">
 		</script>
-		
-		<script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: -34.397, lng: 150.644},
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-	
 		
 	</head>
 	<body>
@@ -132,7 +111,6 @@ $sub_list = array_unique($sub_list);
 							</form>
 						</div>
 					</div>
-					<div id="map-canvas"></div>
 				</div>
 				
 			</div>
@@ -148,5 +126,6 @@ $sub_list = array_unique($sub_list);
 
 
 		<script type="text/javascript" src="js/menu.js"></script>
+		<script type="text/javascript" src="js/map.js"></script>
 	</body>
 </html>
