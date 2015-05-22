@@ -1,7 +1,25 @@
 <?php
 	require('dbconnect.inc');
 	include('login.php');
-
+    // If the values are posted, insert them into the database.
+    if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])){
+        $username = $_POST['username'];
+		$email = $_POST['email'];
+        $password = md5($_POST['password']);
+		$sex = $_POST['sex'];
+		$date = $_POST['date'];
+		
+		
+        try{
+			$userdata = $pdo->prepare("INSERT INTO `user` (username, password, email, sex, birth) VALUES ('$username', '$password', '$email', '$sex', '$date')");
+		}
+		catch (PDOException $e){
+			echo $e->getMessage();
+		} 
+		$userdata->execute();
+		header("Location: index.php");
+		die();
+    }
     ?>
 <!DOCTYPE html>
 <html lang="en">

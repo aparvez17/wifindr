@@ -14,7 +14,11 @@ $searched = $search_word;
 $hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
 $hotspots->bindValue(':searched', "%".$searched."%");
 }
+$hotspots->execute();
 
+$results = $hotspots->fetch(PDO::FETCH_ASSOC);
+$longitude = $results['longitude'];
+$latitude = $results['latitude'];
 $hotspots->execute();
 
 $hot_count = $hotspots->rowCount();
@@ -29,12 +33,15 @@ $hot_count = $hotspots->rowCount();
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
-		<link href='http://fonts.googl  eapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    	<script type="text/javascript" src="js/map.js"></script>
+		<script type="text/javascript" src="js/map.js"></script>
+    
+		
 	</head>
-	<body>
+	<body onload="loadMap(<?php echo $latitude ?>, <?php echo $longitude?>)">
 		<div id="wrapper">
 			<nav id="menu_wrap" class="menu-closed" active="0">
 				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png"/></a>
@@ -61,6 +68,9 @@ $hot_count = $hotspots->rowCount();
 	            </div>
 	        </div>
 	        <div id="content">
+				<?php
+				
+				?>
 		        <div id="map-canvas" class="map-canvas-short"></div>
 		        <div class="page center padding30">
 		        	<h2><?php 
