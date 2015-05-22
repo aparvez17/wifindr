@@ -1,5 +1,5 @@
 <?php
-	require('dbconnect.php');
+	require('dbconnect.inc');
     // If the values are posted, insert them into the database.
     if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])){
         $username = $_POST['username'];
