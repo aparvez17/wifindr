@@ -59,6 +59,9 @@ h3{
 .yellow_bg{
     background-color: rgba(235, 231, 63, 1);
 }
+.yellow_bg90{
+    background-color: rgba(235, 231, 63, 0.9);
+}
 .padding10{
     padding: 10px;
 }
@@ -166,7 +169,7 @@ h3{
 
 #promo_headline{
 	width: 600px;
-	margin-top:130px;
+	margin-top:15vh;
 	top: 100px;
 	line-height: 1.2;
 }

@@ -1,0 +1,32 @@
+@media (max-width: 1050px) {
+  .wrapper{
+    width: auto;
+	}
+  .page{
+  	width: inherit;
+  }
+  #header, #footer{
+  	width: auto;
+  	padding: 0px 30px 0px 30px;
+  }
+  #searchbox{
+  	width: 90%;
+  	height: auto;
+  }
+  .result{
+  	width: 25%;
+  	min-width: 200px;
+  }
+}
+@media (max-width: 850px) {
+  .result{
+  	width: 40%;
+  	min-width: 200px;
+  }
+}
+@media (max-width: 650px) {
+  .result{
+  	width: 100%;
+  	min-width: 200px;
+  }
+}

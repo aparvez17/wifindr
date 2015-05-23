@@ -19,6 +19,8 @@ if($usr_latitude != ""){
 			array_push($id_list, $hotspot['id']);
 		}
 	}
+	$hotspots = $pdo->query('SELECT * FROM `hotspots` WHERE `id` IN (' . implode(',', array_map('intval', $id_list)) . ')');
+	$hotspots->execute();
 }
 else{
 	if($selected_suburb != ""){
@@ -68,6 +70,7 @@ $hot_count = $hotspots->rowCount();
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
+		<link rel="stylesheet" href="css/mobile.css" type="text/css">
 		
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
