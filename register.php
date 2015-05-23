@@ -5,7 +5,7 @@
     if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])){
         $username = $_POST['username'];
 		$email = $_POST['email'];
-        $password = md5($_POST['password']);
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$sex = $_POST['sex'];
 		$date = $_POST['date'];
 		

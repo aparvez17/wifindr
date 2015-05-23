@@ -2,7 +2,7 @@
 if (isset($_POST['username']) and isset($_POST['password'])){
 		//3.1.1 Assigning posted values to variables.
 		$username = $_POST['username'];
-		$password = md5($_POST['password']);
+		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		//3.1.2 Checking the values are existing in the database or not
 		
 		try{

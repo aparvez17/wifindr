@@ -12,11 +12,13 @@ if($usr_latitude != ""){
 	$latitude = $usr_latitude;
 	$longitude = $usr_longitude;
 
+	$hot_count = $hotspots->rowCount();
 	$id_list = Array();
 	foreach($hotspots as $hotspot){
 		$distance = sqrt(pow(($hotspot['latitude']-$usr_latitude), 2)+pow(($hotspot['longitude']-$usr_longitude), 2));
 		if ($distance < 0.015){
-			array_push($id_list, $hotspot['id']);
+			$hotspots = array_push($id_list, $hotspot['id']);
+			
 		}
 	}
 	$hotspots = $pdo->query('SELECT * FROM `hotspots` WHERE `id` IN (' . implode(',', array_map('intval', $id_list)) . ')');
