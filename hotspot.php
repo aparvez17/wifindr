@@ -40,7 +40,7 @@ $review_data->execute();
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     	<script type="text/javascript" src="js/map.js"></script>
 	</head>
-	<body>
+	<body onload="loadMap(<?php echo $hotspot_data['latitude'] ?>, <?php echo $hotspot_data['longitude']?>)">
 		<div id="wrapper">
 			<nav id="menu_wrap" class="menu-closed" active="0">
 				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
@@ -91,7 +91,7 @@ $review_data->execute();
 		        					<div class='user-rating center-text'>
 		        					<h2>",$review['rating'],"/5</h2>
 		        					</div>
-		        					<h3>",$review['name'],"</h3>
+		        					<h3>",$review['person_name'],"</h3>
 		        					<p>",$review['review_text'],"</p>
 		        					<div class='timestamp'>",$review['date'],"</div>
 		        					</div>";

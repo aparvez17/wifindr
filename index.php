@@ -14,7 +14,7 @@ foreach ($suburbs as $suburb){
 	array_push($sub_list, $clean_suburb);
 }
 $sub_list = array_unique($sub_list);
- ?>
+?>
 
 
 <!DOCTYPE html>
@@ -25,18 +25,19 @@ $sub_list = array_unique($sub_list);
 		<meta property="og:title" content="wiFindr - Join the Free Wi-Fi Revolution">
         <meta property="og:image" content="images/logo/logo_black.png">
         <meta property="og:description" content="wiFindr lets you discover and rate free wi-fi hotspots.">
+        <link rel="apple-touch-icon-precomposed" href="images/icons/icon_mobile.png"/>
 		<title>wiFindr - Find free wi-fi near you</title>
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-		<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfHOKpEYRngpFqOITq0YIIm_puZYbPEs4">
-		</script>
-		
+		<script type="text/javascript" 
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfHOKpEYRngpFqOITq0YIIm_puZYbPEs4">
+		</script>	
+		<script type="text/javascript" src="js/geo.js"></script>
 	</head>
-	<body>
+	<body onload="loadMap(-27.471110, 153.022686)">
 		<div class="wrapper">
 			<nav id="menu_wrap" class="menu-closed" active="0">
 				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
@@ -70,18 +71,24 @@ $sub_list = array_unique($sub_list);
 
 						<div id="searchbox" class="page">
 							<img class="left" src="images/logo/logo_black.png" alt="wiFindr - Find free wi-fi near you" />
-							<form action="results.php" method="POST">
-								<input type="text" id="search-bar" name="search_bar" class="left" placeholder="Enter a location to find free Wi-Fi">
-								<select id="select_suburb" name="select_suburb" class="right" >
-									<option value="">or Select a Suburb</option>
+							<form action="results.php" method="POST" name="search">
+								<select name="select_suburb" class="search_select left" >
+									<option value="">Select a Suburb</option>
 									<?php
 									foreach($sub_list as $sub){
 										echo '<option value="',$sub,'">',$sub,'</option>';
 									}
 									?>
 								</select>
-								
-								<input type="image" src="images/icons/location_icon.png" />
+								<select name="sort_rating" class="search_select left" >
+									<option value="">Sort by Rating</option>
+									<option value="rank">Highest - Lowest</option>
+									<option value="number">Most Number - Least Number</option>
+								</select>
+								<input type="hidden" id="latitude" name="latitude" value="">
+								<input type="hidden" id="longitude" name="longitude" value="">
+								<img id="geolocation" src="images/icons/location_icon.png" onclick="javascript:getLocation();" alt="Use Current Location"/>
+								<input type="image" src="images/icons/search_icon.png" />
 							</form>
 						</div>
 					</div>
@@ -98,8 +105,7 @@ $sub_list = array_unique($sub_list);
 		</div>
 		<div id="map-canvas" class="map-canvas"></div>
 
-
-		<script type="text/javascript" src="js/menu.js"></script>
 		<script type="text/javascript" src="js/map.js"></script>
+		<script type="text/javascript" src="js/menu.js"></script>
 	</body>
 </html>

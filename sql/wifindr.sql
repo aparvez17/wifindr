@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2015 at 07:52 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: May 23, 2015 at 02:27 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -95,6 +94,35 @@ INSERT INTO `hotspots` (`id`, `name`, `address`, `suburb`, `latitude`, `longitud
 (52, 'West End Library Wifi', '178 - 180 Boundary Street', 'West End, 4101', '-27.4824508', '153.0120763'),
 (53, 'Wynnum Library Wifi', 'Wynnum Civic Centre, 66 Bay Terrace', 'Wynnum, 4178', '-27.4424489', '153.1731968'),
 (54, 'Zillmere Library Wifi', 'Corner Jennings Street and Zillmere Road', 'Zillmere, 4034', '-27.3601423', '153.0407898');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE IF NOT EXISTS `reviews` (
+  `rev_id` int(10) NOT NULL AUTO_INCREMENT,
+  `hotspot_id` int(9) NOT NULL,
+  `person_id` int(9) NOT NULL,
+  `person_name` varchar(30) NOT NULL,
+  `review_text` varchar(300) NOT NULL,
+  `rating` decimal(10,1) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`rev_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`rev_id`, `hotspot_id`, `person_id`, `person_name`, `review_text`, `rating`, `date`) VALUES
+(2, 7, 1, 'Jimmy Pots', 'The Brisbane City library wi-fi is great! No drop outs of course and super fast! reaching about 8Mb/s.', '5.0', '2015-05-21 07:23:23'),
+(3, 7, 2, 'Alfred Hitchcock', 'Great wi-fi, no problems at all, super fast and reliable. Some of my best work has been done here and it''s all thanks to their awesome wi-fi.', '4.5', '2015-05-20 04:09:13'),
+(4, 7, 3, 'Albert Einstein', 'Great wi-fi, great environment. Using the library''s super fast wi-fi I was able to develop my special theory of relativity, marvellous. ', '4.5', '2015-05-18 00:00:00'),
+(5, 14, 4, 'Nikola Tesla', 'Wow, technology has come a long way! The wi-fi at Brisbane''s Botanic Gardens is truly a marvel.', '4.9', '2015-05-19 07:22:25'),
+(6, 34, 5, 'Jim', 'Horrible Wi-Fi', '3.0', '2015-05-20 04:19:25'),
+(7, 34, 5, 'Jimm', 'Really Really Bad', '2.0', '2015-05-19 00:00:00');
 
 -- --------------------------------------------------------
 

@@ -2,28 +2,59 @@
 include 'dbconnect.inc';
 include('login.php');
 $selected_suburb = $_POST['select_suburb'];
-$search_word = $_POST['search_bar'];
+$rating_sort = $_POST['sort_rating'];
+$usr_latitude = $_POST['latitude'];
+$usr_longitude = $_POST['longitude'];
 
-if ($search_word == ""){
-$searched = $selected_suburb;
-$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
-$hotspots->bindValue(':searched', "%".$searched."%");
+if($usr_latitude != ""){
+	$hotspots = $pdo->prepare('SELECT * FROM hotspots');
+	$hotspots->execute();
+	$latitude = $usr_latitude;
+	$longitude = $usr_longitude;
+
+	$id_list = Array();
+	foreach($hotspots as $hotspot){
+		$distance = sqrt(pow(($hotspot['latitude']-$usr_latitude), 2)+pow(($hotspot['longitude']-$usr_longitude), 2));
+		if ($distance < 0.015){
+			array_push($id_list, $hotspot['id']);
+		}
+	}
 }
 else{
-$searched = $search_word;
-$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
-$hotspots->bindValue(':searched', "%".$searched."%");
+	if($selected_suburb != ""){
+		if($rating_sort == "rank"){
+			$hotspots = $pdo->prepare('SELECT * FROM hotspots INNER JOIN reviews ON hotspots.id = reviews.hotspot_id WHERE hotspots.suburb LIKE :searched ORDER BY AVG(reviews.rating) DESC');
+		}
+		else if($rating_sort == "number"){
+
+		}
+		else{
+			$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
+			$hotspots->bindValue(':searched', "%".$selected_suburb."%");
+		}
+	}
+	else if($selected_suburb == "" && $rating_sort == "" && $usr_latitude == ""){
+		$hotspots = $pdo->prepare('SELECT * FROM hotspots');
+	}
+	else{
+		if($rating_sort == "rank"){
+			$hotspots = $pdo->prepare('SELECT * FROM hotspots INNER JOIN reviews hotspots.id = reviews.hotspot_id ORDER BY AVG(reviews.rating) DESC');
+			$hotspots->bindValue(':searched', "%".$selected_suburb."%");
+		}
+		else if($rating_sort == "number"){
+		}	
+	}
+	$hotspots->execute();
+
+	$results = $hotspots->fetch(PDO::FETCH_ASSOC);
+	$longitude = $results['longitude'];
+	$latitude = $results['latitude'];
+	$hotspots->execute();
 }
-$hotspots->execute();
 
-$results = $hotspots->fetch(PDO::FETCH_ASSOC);
-$longitude = $results['longitude'];
-$latitude = $results['latitude'];
 $hotspots->execute();
-
 $hot_count = $hotspots->rowCount();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,26 +109,49 @@ $hot_count = $hotspots->rowCount();
 		        <div id="map-canvas" class="map-canvas-short"></div>
 		        <div class="page center padding30">
 		        	<h2><?php 
-		        	if($hot_count > 1){
-		        		echo "We found ",$hot_count," hotspots in ", $searched,"</h2>";
-		        	}
-		        	else if($hot_count == 1){
-		        		echo "We found 1 hotspot in ", $searched,"</h2>";
-		        	}
-		        	else{
-		        		echo "We couldn't find any hotspots in ", $searched,"</h2>";
-		        	}
-		        	?>
-		        	
+			        	if($usr_latitude != ""){
+			        		$num = count($id_list);
+			        		echo "We found ", $num," hotspots near you.";
+			        	}
+			        	else if($selected_suburb == "" && $rating_sort == "" && $usr_latitude == ""){
+			        		echo "Showing all results";
+			        	}
+			        	else{
+			        		if($hot_count > 1){
+			        		echo "We found ",$hot_count," hotspots in ", $selected_suburb;
+				        	}
+				        	else if($hot_count == 1){
+				        		echo "We found 1 hotspot in ", $selected_suburb;
+				        	}
+				        	else{
+				        		echo "We couldn't find any hotspots in ", $selected_suburb;
+				        	}
+			        	}
+		        		?>
+		        	</h2>
 		        	<div id="results-wrap">
 		        		<?php
-		        		foreach($hotspots as $hotspot){
-		        			$clean_suburb = preg_replace('/[0-9,]+/', '', $hotspot['suburb']);
-		        			echo '<a href="hotspot.php?id=',$hotspot['id'],'" class="result">',$hotspot['name'],
-		        			'<br/><br/>',$hotspot['address'],
-		        			'<br/>',$clean_suburb,'</a>';
+		        		if($usr_latitude != ""){
+		        			foreach ($hotspots as $hotspot) {
+		        				if(in_array($hotspot['id'], $id_list)){
+		        					$clean_suburb = preg_replace('/[0-9,]+/', '', $hotspot['suburb']);
+				        			echo '<a href="hotspot.php?id=',$hotspot['id'],'" class="result">',$hotspot['name'],
+				        			'<br/><br/>',$hotspot['address'],
+				        			'<br/>',$clean_suburb,'</a>';
+		        				}
+		        				else{
+		        					continue;
+		        				}
+		        			}
 		        		}
-
+		        		else{
+		        			foreach($hotspots as $hotspot){
+			        			$clean_suburb = preg_replace('/[0-9,]+/', '', $hotspot['suburb']);
+			        			echo '<a href="hotspot.php?id=',$hotspot['id'],'" class="result">',$hotspot['name'],
+			        			'<br/><br/>',$hotspot['address'],
+			        			'<br/>',$clean_suburb,'</a>';
+			        		}
+		        		}
 		        		?>
 		        	</div>
 		        </div>

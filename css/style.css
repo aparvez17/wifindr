@@ -183,7 +183,23 @@ h3{
 }
 #searchbox input[type=image]{
 	outline: none;
-	margin-top: 8px;
+	float:right;
+	padding: 10px;
+	border-radius: 3px;
+}
+#searchbox input[type=image]:hover{
+	background-color: rgba(235, 231, 63, 0.8);
+}
+#searchbox input[type=image]:active{
+background-color: rgba(235, 231, 63, 1);
+}
+#geolocation{
+	cursor: pointer;
+	margin-left: 30px;
+	opacity: 0.8;
+}
+#geolocation:hover{
+	opacity: 1;
 }
 #search-bar{
 	width: 73%;
@@ -198,15 +214,13 @@ h3{
 	padding-left: 10px;
 	color: #ccc;
 }
-#select_suburb{
+.search_select{
 	border: 1px solid #ccc;
 	background-color: #F5F5F5;
 	border-radius: 3px;
-	position: relative; 
-	top: -41px; 
-	left: -88px;
-	padding: 8px; 
-	width:300px;
+	padding: 8px;
+	margin: 7px 0px 0px 20px; 
+	width:340px;
 }
 #search-bar:focus{
 	border: 2px solid #EBE73F;
