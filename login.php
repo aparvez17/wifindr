@@ -1,4 +1,6 @@
 <?php
+session_start();
+include 'dbconnect.inc';
 if (isset($_POST['username']) and isset($_POST['password'])){
 		//3.1.1 Assigning posted values to variables.
 		$username = $_POST['username'];
@@ -15,18 +17,16 @@ if (isset($_POST['username']) and isset($_POST['password'])){
 		
 		$count = $userdata->rowCount();
 		//3.1.2 If the posted values are equal to the database values, then session will be created for the user.
-		if ($count == 1){
-		$_SESSION['username'] = $username;
-		}else{
-		//3.1.3 If the login credentials doesn't match, he will be shown with an error message.
-		echo "Invalid Login Credentials.";
-		}
-		}
-		//3.1.4 if the user is logged in Greets the user with message
-		if (isset($_SESSION['username'])){
-		$username = $_SESSION['username'];
-		header("Location: index.php");
-		die();
-		}
+	if ($count == 1){
+	$_SESSION['username'] = $username;
+	}else{
+	//3.1.3 If the login credentials doesn't match, he will be shown with an error message.
+	echo "Invalid Login Credentials.";
+	}
+	}
+	//3.1.4 if the user is logged in Greets the user with message
+	if (isset($_SESSION['username'])){
+	header("Location: index.php");
+}
 		
 ?>

@@ -6,6 +6,7 @@
         $username = $_POST['username'];
 		$email = $_POST['email'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+		$password = password_hash($_POST['passwordCheck'], PASSWORD_DEFAULT);
 		$sex = $_POST['sex'];
 		$date = $_POST['date'];
 		
@@ -37,6 +38,7 @@
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="js/map.js"></script>
+		 <script type="text/javascript" src="js/validate.js"></script>
     </head>
     <body class="yellow_bg">
         <div id="wrapper">
@@ -67,7 +69,7 @@
             <div id="content">
                 <h1 class="center-text register-heading">Join the Free Wi-Fi Revolution</h1>
                 <div class="register-wrap center padding30">
-                    <form id="registration" method="POST">
+                    <form id="registration" name="registration" onsubmit="return formValidation();" method="POST">
                         <input id = "username" type="text" name = "username" placeholder="Name"/>
                         <input id = "email" name = "email" type="text" placeholder="Email">
 						<input type="radio" name="sex" value="male" checked>Male
@@ -75,8 +77,8 @@
 						</br>
 						<input type="date" name="date">
                         <input id = "password" name="password" type="password" placeholder="Password"/>
-                        <input type="password" placeholder="Re-Type Password"/>
-                        <input type="submit" value="Sign Up!" />
+                        <input id = "passwordCheck" name="passwordCheck" type="password" placeholder="Re-Type Password"/>
+                        <input type="submit" name="submit" value="Submit" />
                     </form>
                 </div>
             </div>

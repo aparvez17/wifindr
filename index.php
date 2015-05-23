@@ -45,6 +45,14 @@ $sub_list = array_unique($sub_list);
 				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
 				<h3 class="center-text padding30">MENU</h3>
 				<ul>
+				<?php 
+		        	echo $_SESSION['username'];
+		        	if (isset($_SESSION['username'])){
+		        		echo "<li>Learn More</li>";
+		        	}
+		        		 
+		        	?>
+					
 					<li onclick="login()">Log in</li>
 					<div id="login" open="0">
 						<form>

@@ -1,6 +1,7 @@
 <?php
 include 'dbconnect.inc';
 include('login.php');
+
 $h_id = htmlspecialchars($_GET['id']);
 
 try{
