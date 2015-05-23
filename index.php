@@ -59,11 +59,6 @@ $sub_list = array_unique($sub_list);
 					<li>Terms</li>
 				</ul>
 			</nav>
-			<div id="header_wrap" class="yellow_bg90">
-				<div id="header" class="center">
-					<a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png" alt="Open Menu"/></a>
-				</div>
-			</div>
 			<div id="content">
 				<div class="page_wrap">		
 					<div class="page center">
@@ -85,8 +80,11 @@ $sub_list = array_unique($sub_list);
 								</select>
 								<select name="sort_rating" class="search_select left" >
 									<option value="">Sort by Rating</option>
-									<option value="rank">Highest - Lowest</option>
-									<option value="number">Most Number - Least Number</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
 								</select>
 								<input type="hidden" id="latitude" name="latitude" value="">
 								<input type="hidden" id="longitude" name="longitude" value="">
@@ -94,6 +92,11 @@ $sub_list = array_unique($sub_list);
 								<input type="image" src="images/icons/search_icon.png" />
 							</form>
 						</div>
+					</div>
+				</div>
+				<div id="header_wrap">
+					<div id="header" class="center">
+						<a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png" alt="Open Menu"/></a>
 					</div>
 				</div>
 				

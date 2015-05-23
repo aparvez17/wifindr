@@ -54,7 +54,7 @@ $review_data->execute();
 							<input type="submit" value="Login" />
 						</form>
 					</div>
-					<a href="register.html"><li>Create an account</li></a>
+					<a href="register.php"><li>Create an account</li></a>
 					<li>Learn More</li>
 					<li>Privacy</li>
 					<li>Terms</li>
@@ -83,7 +83,29 @@ $review_data->execute();
 			        </div>
 		    	</div>
 
+
 		        <div class="page center padding30">
+		        	
+		        	<?php 
+		        	echo $_SESSION['username'];
+		        	if (isset($_SESSION['username'])){
+		        		echo "<h3>Add a review</h3>,
+		        		<form method='POST' action='add_review.php'>
+		        			<input type='text'/>
+		        			<select name='rating'>
+									<option value=''>Rating</option>
+									<option value='1'>1</option>
+									<option value='2'>2</option>
+									<option value='3'>3</option>
+									<option value='4'>4</option>
+									<option value='5'>5</option>
+								</select>
+		        			<input type='submit' />
+		        		</form>";
+		        	}
+		        		 
+		        	?>
+		        	
 		        	<h2>User Reviews</h2>
 		        	<?php
 		        		foreach($review_data as $review){
