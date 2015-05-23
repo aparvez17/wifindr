@@ -25,6 +25,10 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="description" content="Join the Free Wi-Fi revolution. Joining Wifindr lets you add reviews to hotspots.">
+        <meta property="og:title" content="Wifindr - Join the Free Wi-Fi Revolution">
+        <meta property="og:image" content="images/logo/logo_black.png">
+        <meta property="og:description" content="Wifindr lets you discover and rate free wi-fi hotspots.">
         <title>WiFindr - Join the Free Wi-Fi Revolution</title>
         <link rel="stylesheet" href="css/reset.css" type="text/css">
         <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -37,7 +41,7 @@
     <body class="yellow_bg">
         <div id="wrapper">
             <nav id="menu_wrap" class="menu-closed" active="0">
-                <a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png"/></a>
+                <a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
                 <h3 class="center-text padding30">MENU</h3>
                 <ul>
                     <li onclick="login()">Log in</li>
@@ -56,8 +60,8 @@
             </nav>
             <div id="header_wrap" class="yellow_bg">
                 <div id="header" class="center">
-                     <a href="index.php"><img src="images/logo/logo_white.png" class="left header-logo"></a>
-                    <a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png"/></a>
+                     <a href="index.php"><img src="images/logo/logo_white.png" class="left header-logo" alt="wiFindr"></a>
+                    <a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png" alt="Open Menu"/></a>
                 </div>
             </div>
             <div id="content">

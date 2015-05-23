@@ -23,11 +23,14 @@ catch (PDOException $e){
 } 
 $review_data->execute();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<meta name="description" content="View and review a hotspot.">
+		<meta property="og:title" content="Wifindr - Join the Free Wi-Fi Revolution">
+        <meta property="og:image" content="images/logo/logo_black.png">
+        <meta property="og:description" content="Wifindr lets you discover and rate free wi-fi hotspots.">
 		<title>wiFindr - Search Results</title>
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
@@ -40,7 +43,7 @@ $review_data->execute();
 	<body>
 		<div id="wrapper">
 			<nav id="menu_wrap" class="menu-closed" active="0">
-				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png"/></a>
+				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
 				<h3 class="center-text padding30">MENU</h3>
 				<ul>
 					<li onclick="login()">Log in</li>
@@ -59,8 +62,8 @@ $review_data->execute();
 			</nav>
 			<div id="header_wrap" class="yellow_bg">
 	            <div id="header" class="center">
-	                <a href="index.php"><img src="images/logo/logo_white.png" class="left header-logo"></a>
-	                <a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png"/></a>
+	                <a href="index.php"><img src="images/logo/logo_white.png" class="left header-logo" alt="wiFindr"></a>
+	                <a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png" alt="Open Menu"/></a>
 	            </div>
 	        </div>
 			<div id="content">
@@ -82,7 +85,6 @@ $review_data->execute();
 
 		        <div class="page center padding30">
 		        	<h2>User Reviews</h2>
-		        	
 		        	<?php
 		        		foreach($review_data as $review){
 		        			echo "<div class='user-review'>
@@ -95,27 +97,8 @@ $review_data->execute();
 		        					</div>";
 		        		}    
 		        	?>
-					<!--<div class="user-review">
-		        		<div class="user-rating center-text">
-		        			<h2>4.5/5</h2>
-		        		</div>
-		        		<h3>Asad Parvez</h3>
-		        		<p>You are expected to complete Part 2 - Server side design and implementation using PHP and MySQL in the second half of the semester.  The whole project is expected to be completed at the end of week12 and you will demo your website to your tutor in Week12 Practical class.
-		        		</p>
-		        		<div class="timestamp">10 May 2015</div>
-		        	</div>
-		        	<div class="user-review">
-		        		<div class="user-rating center-text">
-		        			<h2>4.5/5</h2>
-		        		</div>
-		        		<h3>Asad Parvez</h3>
-		        		<p>You are expected to complete Part 2 - Server side design and implementation using PHP and MySQL in the second half of the semester.  The whole project is expected to be completed at the end of week12 and you will demo your website to your tutor in Week12 Practical class.
-		        		</p>
-		        		<div class="timestamp">10 May 2015</div>
-		        	</div>-->
 		        </div>
 		    </div>
-
 	       	<div id="footer_wrap">
 				<div id="footer" class="page center">
 					<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />

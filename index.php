@@ -21,6 +21,10 @@ $sub_list = array_unique($sub_list);
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<meta name="description" content="Welcome to wiFindr! wiFindr lets you discover and rate free wi-fi hotspots.">
+		<meta property="og:title" content="wiFindr - Join the Free Wi-Fi Revolution">
+        <meta property="og:image" content="images/logo/logo_black.png">
+        <meta property="og:description" content="wiFindr lets you discover and rate free wi-fi hotspots.">
 		<title>wiFindr - Find free wi-fi near you</title>
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
@@ -35,7 +39,7 @@ $sub_list = array_unique($sub_list);
 	<body>
 		<div class="wrapper">
 			<nav id="menu_wrap" class="menu-closed" active="0">
-				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png"/></a>
+				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
 				<h3 class="center-text padding30">MENU</h3>
 				<ul>
 					<li onclick="login()">Log in</li>
@@ -56,7 +60,7 @@ $sub_list = array_unique($sub_list);
 				<div class="page_wrap">		
 					<div class="page center">
 
-						<a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png"/></a>
+						<a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png" alt="Open Menu"/></a>
 
 						<br class="clear">
 
