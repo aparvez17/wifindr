@@ -92,7 +92,15 @@ $review_data->execute();
 				        	</div>
 				        	<div id="rating_overview" class="right">
 				        		<h2><?php echo $avg_rating; ?>/5</h2>
-				        		<h3><?php echo $num_ratings; ?> Reviews</h3>
+				        		<h3><?php 
+					        			if ($num_ratings == 1){
+					        				echo $num_ratings," Review";
+					        			}
+					        			else{
+					        				echo $num_ratings," Reviews";
+					        			}
+				        			?>
+				        		 </h3>
 				        	</div>
 				        </div>
 			        </div>
