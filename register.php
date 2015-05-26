@@ -73,8 +73,8 @@
                     <form id="registration" name="registration" onsubmit="return formValidation();" method="POST">
                         <input id = "username" type="text" name = "username" placeholder="Name"/>
                         <input id = "email" name = "email" type="text" placeholder="Email">
-						<input type="radio" name="sex" value="male" checked>Male
-						<input type="radio" name="sex" value="female">Female
+						<input type="radio" name="sex" value="male" checked><label>Male</label>
+						<input type="radio" name="sex" value="female"><label>Female</label>
 						</br>
 						<input type="date" name="date">
                         <input id = "password" name="password" type="password" placeholder="Password"/>

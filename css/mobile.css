@@ -10,8 +10,7 @@
   	padding: 0px 20px 0px 20px;
   }
   #searchbox{
-  	width: 90%;
-  	height: auto;
+  	width: 100%;
   }
   .result{
   	width: 30%;
@@ -39,4 +38,17 @@
   .page{
     padding: 20px;
   }
+}
+@media (max-width: 600px){
+  .register-wrap{
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #registration input[type=submit]{
+    width: 100%;
+  }
+  .register-heading{
+    font-size: 2.6em;
+  }
+
 }

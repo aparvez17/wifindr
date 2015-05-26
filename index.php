@@ -74,31 +74,32 @@ $sub_list = array_unique($sub_list);
 						<div id="promo_headline" class="center">
 							<h1 class="center-text">We know you're only here for the free Wi-Fi</h1>
 						</div>
-
-						<div id="searchbox" class="page">
-							<img class="left" src="images/logo/logo_black.png" alt="wiFindr - Find free wi-fi near you" />
-							<form action="results.php" method="POST" name="search">
-								<select name="select_suburb" class="search_select left" >
-									<option value="">Select a Suburb</option>
-									<?php
-									foreach($sub_list as $sub){
-										echo '<option value="',$sub,'">',$sub,'</option>';
-									}
-									?>
-								</select>
-								<select name="sort_rating" class="search_select left" >
-									<option value="">Sort by Rating</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-								<input type="hidden" id="latitude" name="latitude" value="">
-								<input type="hidden" id="longitude" name="longitude" value="">
-								<img id="geolocation" src="images/icons/location_icon.png" onclick="javascript:getLocation();" alt="Use Current Location"/>
-								<input type="image" src="images/icons/search_icon.png" />
-							</form>
+						<div class="padding30">
+							<div id="searchbox" class="page">
+								<img class="left" src="images/logo/logo_black.png" alt="wiFindr - Find free wi-fi near you" />
+								<form action="results.php" method="POST" name="search">
+									<select name="select_suburb" class="search_select left" >
+										<option value="">Select a Suburb</option>
+										<?php
+										foreach($sub_list as $sub){
+											echo '<option value="',$sub,'">',$sub,'</option>';
+										}
+										?>
+									</select>
+									<select name="sort_rating" class="search_select left" >
+										<option value="">Sort by Rating</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+									<input type="hidden" id="latitude" name="latitude" value="">
+									<input type="hidden" id="longitude" name="longitude" value="">
+									<img id="geolocation" src="images/icons/location_icon.png" onclick="javascript:getLocation();" alt="Use Current Location"/>
+									<input type="image" src="images/icons/search_icon.png" />
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
