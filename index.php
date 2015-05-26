@@ -78,6 +78,9 @@ include 'includes/index.inc';
 					<li>Learn More</li>
 					<li>Privacy</li>
 					<li>Terms</li>
+					<?php
+					echo '<a href="logout.php"><li>logout</li></a>';
+					?>
 				</ul>
 			</nav>
 

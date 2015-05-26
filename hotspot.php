@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'dbconnect.inc';
 include 'includes/hotspot.inc';
 
@@ -103,17 +104,19 @@ include 'includes/hotspot.inc';
 			        </div>
 		    	</div>
 
-		    	<!-- Add A Rating -->
+		    	<!-- Add A Review-->
+		    	
 		        <div class="page center padding30">
+		        	<?php if (isset($_SESSION["username"])){ ?>
 		        	<h3>Add a review</h3>
-		        		<form method='POST' action='review.php' id="review">
-		        			<textarea placeholder="Write a review..." id="review_text" name="review_text" 
-		        							oninvalid="setCustomValidity('Please write a review here.')" 
-		        							onchange="try{setCustomValidity('')}catch(e){}" 
+		        		<form method='POST' action='review.php' id='review'>
+		        			<textarea placeholder='Write a review...'' id='review_text' name='review_text'
+		        							oninvalid='setCustomValidity('Please write a review here.')' 
+		        							onchange='try{setCustomValidity('')}catch(e){}' 
 		        							required></textarea>
-		        			<select id="rating" name='rating' 
-		        							oninvalid="setCustomValidity('Don't forget to rate.')" 
-		        							onchange="try{setCustomValidity('')}catch(e){}"  
+		        			<select id='rating' name='rating' 
+		        							oninvalid='setCustomValidity('Don't forget to rate.')'
+		        							onchange='try{setCustomValidity('')}catch(e){}'
 		        							required>
 									<option value=''>Rating</option>
 									<option value='1'>1</option>
@@ -122,9 +125,11 @@ include 'includes/hotspot.inc';
 									<option value='4'>4</option>
 									<option value='5'>5</option>
 								</select>
-							<input name="hotspot_id" type="hidden" value="<?php echo $h_id ?>">
-		        			<input id="send_review" type='submit' value="Send" class="right" />
+							<input name='hotspot_id' type='hidden' value='<?php echo $h_id; ?>'>
+		        			<input id='send_review' type='submit' value='Send' class='right' />
 		        		</form>
+		        	<?php } else {}; ?>
+
 		        	<h2>User Reviews</h2>
 		        	<?php
 		        		if($num_ratings == 0){
