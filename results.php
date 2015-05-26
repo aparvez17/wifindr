@@ -13,14 +13,14 @@ if($usr_latitude != ""){
 	$longitude = $usr_longitude;
 
 	$hot_count = $hotspots->rowCount();
-	$id_list = Array();
+	$id_array = Array();
 	foreach($hotspots as $hotspot){
 		$distance = sqrt(pow(($hotspot['latitude']-$usr_latitude), 2)+pow(($hotspot['longitude']-$usr_longitude), 2));
 		if ($distance < 0.015){
-			$hotspots = array_push($id_list, $hotspot['id']);
+			$hotspots = array_push($id_array, $hotspot['id']);
 		}
 	}
-	$hotspots = $pdo->query('SELECT * FROM `hotspots` WHERE `id` IN (' . implode(',', array_map('intval', $id_list)) . ')');
+	$hotspots = $pdo->prepare('SELECT * FROM `hotspots` WHERE `id` IN ('.implode(',', array_map('intval', $id_array)).')');
 	$hotspots->execute();
 }
 else{
@@ -121,8 +121,8 @@ $hot_count = $hotspots->rowCount();
 		        <div class="page center padding30">
 		        	<h2><?php 
 			        	if($usr_latitude != ""){
-			        		$num = count($id_list);
-			        		echo "We found ", $num," hotspots near you.";
+			        		$num = count($id_array);
+			        		echo "We found ", $num," hotspots close by.";
 			        	}
 			        	else if($selected_suburb == "" && $rating_sort == "" && $usr_latitude == ""){
 			        		echo "Showing all results";
@@ -144,7 +144,7 @@ $hot_count = $hotspots->rowCount();
 		        		<?php
 		        		if($usr_latitude != ""){
 		        			foreach ($hotspots as $hotspot) {
-		        				if(in_array($hotspot['id'], $id_list)){
+		        				if(in_array($hotspot['id'], $id_array)){
 		        					$clean_suburb = preg_replace('/[0-9,]+/', '', $hotspot['suburb']);
 				        			echo '<a href="hotspot.php?id=',$hotspot['id'],'" class="result">',$hotspot['name'],
 				        			'<br/><br/>',$hotspot['address'],
