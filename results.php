@@ -134,27 +134,21 @@ $hot_count = $hotspots->rowCount();
 		        	</h2>
 		        	<div id="results-wrap">
 		        		<?php
-		        		if($usr_latitude != ""){
-		        			foreach ($hotspots as $hotspot) {
-		        				if(in_array($hotspot['id'], $id_array)){
-		        					$clean_suburb = preg_replace('/[0-9,]+/', '', $hotspot['suburb']);
-				        			echo '<a href="hotspot.php?id=',$hotspot['id'],'" class="result">',$hotspot['name'],
-				        			'<br/><br/>',$hotspot['address'],
-				        			'<br/>',$clean_suburb,'</a>';
+		        			foreach($hotspots as $hotspot){
+		        				if($hotspot['hotspot_rating'] != 0){
+		        					$rating = $hotspot['hotspot_rating'];
 		        				}
 		        				else{
-		        					continue;
+		        					$rating = "-";
 		        				}
-		        			}
-		        		}
-		        		else{
-		        			foreach($hotspots as $hotspot){
+		        				
 			        			$clean_suburb = preg_replace('/[0-9,]+/', '', $hotspot['suburb']);
-			        			echo '<a href="hotspot.php?id=',$hotspot['id'],'" class="result">',$hotspot['name'],
-			        			'<br/><br/>',$hotspot['address'],
-			        			'<br/>',$clean_suburb,'</a>';
+
+			        			echo '<a href="hotspot.php?id=',$hotspot['id'],'" class="result">',
+			        			'<p class="result-name">',$hotspot['name'],'</p>',
+			        			'<p class="result-address">',$hotspot['address'],',',$clean_suburb,'</p>',
+			        			'<div class="result-rating">',$rating,'/5</div></a>';
 			        		}
-		        		}
 		        		?>
 		        	</div>
 		        </div>

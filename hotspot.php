@@ -26,9 +26,13 @@ $review_data->execute();
 
 $ratings = $review_data->fetchAll(PDO::FETCH_COLUMN, 5);
 
-$num_ratings = count($ratings);
-$avg_rating = number_format(array_sum($ratings) / $num_ratings, 2); 
-
+$num_ratings = count($ratings); 
+if($num_ratings == 0){
+	$avg_rating = "-";
+}
+else{
+	$avg_rating = number_format(array_sum($ratings) / $num_ratings, 2);
+}
 $review_data->execute();
 
 	
@@ -97,7 +101,7 @@ $review_data->execute();
 		        <div class="page center padding30">
 		        	<h3>Add a review</h3>
 		        		<form method='POST' action='review.php' id="review">
-		        			<textarea id="review_text" name="review_text" 
+		        			<textarea placeholder="Write a review..." id="review_text" name="review_text" 
 		        							oninvalid="setCustomValidity('Please write a review here.')" 
 		        							onchange="try{setCustomValidity('')}catch(e){}" 
 		        							required></textarea>
@@ -117,6 +121,9 @@ $review_data->execute();
 		        		</form>
 		        	<h2>User Reviews</h2>
 		        	<?php
+		        		if($num_ratings == 0){
+		        			echo "<br/><h3>This hotspot has no ratings... yet.</h3>";
+		        		}
 		        		foreach($review_data as $review){
 		        			$format_date = date("jS M Y", strtotime($review['date']));
 		        			echo "<div class='user-review'>

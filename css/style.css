@@ -334,6 +334,7 @@ background-color: rgba(235, 231, 63, 1);
 	border: 1px solid #D5D12E;
 	border-bottom: 3px solid #D5D12E;
 	box-sizing: border-box;
+	position: relative;
 
 }
 .result:hover{
@@ -345,6 +346,23 @@ background-color: rgba(235, 231, 63, 1);
 	margin-top: 30px;
 	overflow: hidden;
 	height: auto;
+}
+.result-name{
+	font-family: inherit;
+	margin: 0px 0px 15px 0px;
+	font-size: 1.4em;
+}
+.result-address{
+	font-family: inherit;
+	margin: 0px 0px 30px 0px;
+	font-size: 0.9em;
+}
+.result-rating{
+	font-family: inherit;
+	font-size: 2em;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
 }
 #hotspot_title{
 	padding: 20px 40px 40px 40px;

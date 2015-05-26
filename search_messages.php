@@ -24,7 +24,7 @@ switch ($case) {
         break;
     case 3:
        	if($hot_count == 1){
-			$search_message = "We found 1 hotspot in".$selected_suburb;
+			$search_message = "We found 1 hotspot in ".$selected_suburb;
 		}
 		else if($hot_count > 1){
 			$search_message = "We found ".$hot_count." hotspots in ".$selected_suburb;
