@@ -27,7 +27,7 @@ if (isset($_POST['username']) and isset($_POST['password'])){
 	//3.1.4 if the user is logged in Greets the user with message
 	if (isset($_SESSION['username'])){
 		echo "Yes it worked";
-		//header("Location: index.php");
+		header("Location: index.php");
 }
 		
 ?>

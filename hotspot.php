@@ -1,6 +1,6 @@
 <?php
 include 'dbconnect.inc';
-include('login.php');
+include 'login.php';
 
 $h_id = htmlspecialchars($_GET['id']);
 
@@ -23,6 +23,15 @@ catch (PDOException $e){
 	echo $e->getMessage();
 } 
 $review_data->execute();
+
+$ratings = $review_data->fetchAll(PDO::FETCH_COLUMN, 5);
+
+$num_ratings = count($ratings);
+$avg_rating = number_format(array_sum($ratings) / $num_ratings, 2); 
+
+$review_data->execute();
+
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,23 +87,24 @@ $review_data->execute();
 					        	<h3 id="hotspot_address"><?php echo $hotspot_data['address']; ?></h3>
 				        	</div>
 				        	<div id="rating_overview" class="right">
-				        		<h2>4.5/5</h2>
-				        		<h3>23 Reviews</h3>
+				        		<h2><?php echo $avg_rating; ?>/5</h2>
+				        		<h3><?php echo $num_ratings; ?> Reviews</h3>
 				        	</div>
 				        </div>
 			        </div>
 		    	</div>
 
-
 		        <div class="page center padding30">
-		        	
-		        	<?php 
-		        	echo $_SESSION['username'];
-		        	if (isset($_SESSION['username'])){
-		        		echo "<h3>Add a review</h3>,
-		        		<form method='POST' action='add_review.php'>
-		        			<input type='text'/>
-		        			<select name='rating'>
+		        	<h3>Add a review</h3>
+		        		<form method='POST' action='review.php' id="review">
+		        			<textarea id="review_text" name="review_text" 
+		        							oninvalid="setCustomValidity('Please write a review here.')" 
+		        							onchange="try{setCustomValidity('')}catch(e){}" 
+		        							required></textarea>
+		        			<select id="rating" name='rating' 
+		        							oninvalid="setCustomValidity('Don't forget to rate.')" 
+		        							onchange="try{setCustomValidity('')}catch(e){}"  
+		        							required>
 									<option value=''>Rating</option>
 									<option value='1'>1</option>
 									<option value='2'>2</option>
@@ -102,22 +112,20 @@ $review_data->execute();
 									<option value='4'>4</option>
 									<option value='5'>5</option>
 								</select>
-		        			<input type='submit' />
-		        		</form>";
-		        	}
-		        		 
-		        	?>
-		        	
+							<input name="hotspot_id" type="hidden" value="<?php echo $h_id ?>">
+		        			<input id="send_review" type='submit' value="Send" class="right" />
+		        		</form>
 		        	<h2>User Reviews</h2>
 		        	<?php
 		        		foreach($review_data as $review){
+		        			$format_date = date("jS M Y", strtotime($review['date']));
 		        			echo "<div class='user-review'>
 		        					<h3>",$review['person_name'],"</h3>
 		        					<p>",$review['review_text'],"</p>
 		        					<div class='user-rating'>
 		        					<h2>",$review['rating'],"/5</h2>
 		        					</div>
-		        					<div class='timestamp'>",$review['date'],"</div>
+		        					<div class='timestamp'>",$format_date,"</div>
 		        					</div>";
 		        		}    
 		        	?>
@@ -134,5 +142,6 @@ $review_data->execute();
 
 
         <script type="text/javascript" src="js/menu.js"></script>
+
 	</body>
 </html>
