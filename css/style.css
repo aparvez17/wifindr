@@ -1,4 +1,10 @@
-/* Primary stylesheet for site theme*/
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:	wiFinder
+Version:	1.0
+-------------------------------------------------------------------*/
+
 body{
 	background-color: #f8f8f8;
 	overflow-x: hidden;
@@ -14,6 +20,11 @@ body{
    overflow: hidden;
    height: auto;
 }
+
+/*------------------------------------------------------------------
+Commonly Used Multi-Purpose Classes
+-------------------------------------------------------------------*/
+
 .left{
 	float:left;
 }
@@ -29,6 +40,11 @@ body{
 .clear{
 	clear: both;
 }
+
+/*------------------------------------------------------------------
+Headings
+-------------------------------------------------------------------*/
+
 h1{
 	font-family: "Montserrat", sans-serif;
 	font-size: 3rem;
@@ -44,8 +60,16 @@ h2{
     margin: 10px 0px 10px 0px;
 }
 h3{
-
+	font-family: "Montserrat", sans-serif;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #333;
+    margin: 10px 0px 10px 0px;
 }
+
+/*------------------------------------------------------------------
+General Purpose Layout
+-------------------------------------------------------------------*/
 .page_wrap{
 	width: 100%;
 	height: 100vh;
@@ -76,9 +100,14 @@ h3{
 .padding50{
     padding: 50px;
 }
-.100wrap{
+.wrap100{
 	width: 100%;
 }
+
+/*------------------------------------------------------------------
+HEADER
+-------------------------------------------------------------------*/
+
 #header_wrap{
     height: 60px;
     width: 100%;
@@ -87,6 +116,9 @@ h3{
     width: 1024px;
     height: 60px;
 }
+.header-logo{
+    margin-top: 12px;
+}
 #menu_icon{
 	position: relative;
 	top: 18px;
@@ -94,6 +126,11 @@ h3{
 	display: block;
 	z-index: 10;
 }
+
+/*------------------------------------------------------------------
+MENU
+-------------------------------------------------------------------*/
+
 #menu_wrap{
 	width: 300px;
 	height:100vh;
@@ -168,17 +205,16 @@ h3{
 	width: 50%;
 	height: 40px;
 }
-.header-logo{
-    margin-top: 12px;
-}
 
+/*------------------------------------------------------------------
+HOMEPAGE
+-------------------------------------------------------------------*/
 #promo_headline{
 	width: 600px;
 	margin-top:150px;
 	top: 100px;
 	line-height: 1.2;
 }
-
 #searchbox{
 	width: 100%;
 	background-color: #fff;
@@ -226,6 +262,10 @@ background-color: rgba(235, 231, 63, 1);
 	color: #000;
 	outline: none;
 }
+
+/*------------------------------------------------------------------
+FOOTER
+-------------------------------------------------------------------*/
 #footer_wrap, #footer_scroll_wrap{
 	width: 100%;
 	height: 30px;
@@ -245,6 +285,10 @@ background-color: rgba(235, 231, 63, 1);
 	color: #ccc;
 	font-size: 12px;
 }
+
+/*------------------------------------------------------------------
+Maps
+-------------------------------------------------------------------*/
 
 .map-canvas { 
 	height: 100vh;
@@ -266,6 +310,11 @@ background-color: rgba(235, 231, 63, 1);
 	width:400px;
 	margin: 30px 0px 30px 0px;
 }
+
+/*------------------------------------------------------------------
+REGISTRATION
+-------------------------------------------------------------------*/
+
 #registration input[type=text], #registration input[type=email], #registration input[type=password], #registration input[type=date]{
     display: block;
     width: 400px;
@@ -308,6 +357,11 @@ background-color: rgba(235, 231, 63, 1);
 	position: relative;
 	text-align: center;
 }
+
+/*------------------------------------------------------------------
+SEARCH RESULTS
+-------------------------------------------------------------------*/
+
 #search_again{
 	display: inline-block;
 	width: auto;
@@ -364,6 +418,11 @@ background-color: rgba(235, 231, 63, 1);
 	bottom: 20px;
 	left: 20px;
 }
+
+/*------------------------------------------------------------------
+HOTSPOT PAGE
+-------------------------------------------------------------------*/
+
 #hotspot_title{
 	padding: 20px 40px 40px 40px;
 	background-color: #222222;

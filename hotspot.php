@@ -82,7 +82,7 @@ $review_data->execute();
 	            </div>
 	        </div>
 			<div id="content">
-		        <div class="yellow_bg 100wrap">
+		        <div class="yellow_bg wrap100">
 			        <div class="page center padding30">
 			        	<div id="map-canvas" class="map-canvas-short"></div>
 			        	<div id="hotspot_title">
