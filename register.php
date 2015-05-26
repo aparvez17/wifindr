@@ -1,6 +1,5 @@
 <?php
 	require('dbconnect.inc');
-	include('login.php');
     // If the values are posted, insert them into the database.
     if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])){
         $username = $_POST['username'];
@@ -49,7 +48,7 @@
                 <ul>
                     <li onclick="login()">Log in</li>
                     <div id="login" open="0">
-                        <form method = "POST">
+                        <form action="login.php" method = "POST">
                             <input name = "username" type="text" placeholder="Email" />
                             <input name = "password" type="password" placeholder="Password" />
                             <input type="submit" value="Login" />

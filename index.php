@@ -2,7 +2,6 @@
 
 session_start();
 include 'dbconnect.inc';
-include 'login.php';
 include 'includes/index.inc';
 
 ?>

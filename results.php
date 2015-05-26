@@ -1,6 +1,5 @@
 <?php
 include 'dbconnect.inc';
-include 'login.php';
 include 'includes/results.inc';
 ?>
 
