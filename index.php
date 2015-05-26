@@ -1,67 +1,66 @@
 <?php
 include 'dbconnect.inc';
 include 'login.php';
-try{
-	$suburbs = $pdo->query('SELECT DISTINCT suburb from hotspots');
-}
-catch (PDOException $e){
-	echo $e->getMessage();
-} 
-
-$sub_list = Array();
-foreach ($suburbs as $suburb){
-	$clean_suburb = trim(preg_replace('/[0-9,]+/', '', $suburb['suburb']));
-	array_push($sub_list, $clean_suburb);
-}
-$sub_list = array_unique($sub_list);
+include 'includes/index.inc';
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Social Media Meta Data -->
 		<meta name="description" content="Welcome to wiFindr! wiFindr lets you discover and rate free wi-fi hotspots.">
 		<meta property="og:title" content="wiFindr - Join the Free Wi-Fi Revolution">
         <meta property="og:image" content="images/logo/logo_black.png">
         <meta property="og:description" content="wiFindr lets you discover and rate free wi-fi hotspots.">
 
+        <!-- Mobile Meta Data  -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        	<!-- iOS  -->
         <link rel="apple-touch-icon-precomposed" href="images/icons/icon_mobile.png"/>
         <link rel="apple-touch-startup-image" href="images/splash.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+        	<!-- Android  -->
         <link rel="manifest" href="manifest.json">
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="icon" sizes="192x192" href="images/icons/icon_mobile.png">
 
 		<title>wiFindr - Find free wi-fi near you</title>
+
+		<!-- Stylesheets  -->
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
 		<link rel="stylesheet" href="css/mobile.css" type="text/css">
+
+		<!-- Online Fonts  -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-		<script type="text/javascript" 
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfHOKpEYRngpFqOITq0YIIm_puZYbPEs4">
-		</script>	
+
+		<!-- External Javascript Files  -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfHOKpEYRngpFqOITq0YIIm_puZYbPEs4"></script>	
 		<script type="text/javascript" src="js/geo.js"></script>
+		<script type="text/javascript" src="js/map.js"></script>
+		<script type="text/javascript" src="js/menu.js"></script>
 	</head>
+
+	<!-- LoadMap Function generates map and places markers onload -->
 	<body onload="loadMap(-27.471110, 153.022686)">
 		<div class="wrapper">
+
+			<!-- Navigation Menu -->
 			<nav id="menu_wrap" class="menu-closed" active="0">
 				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
 				<h3 class="center-text padding30">MENU</h3>
 				<ul>
-				<?php 
-		        	echo $_SESSION['username'];
-		        	if (isset($_SESSION['username'])){
-		        		echo "<li>Learn More</li>";
-		        	}
-		        		 
+					<?php 
+			        	echo $_SESSION["username"];
+			        	if (isset($_SESSION['username'])){
+			        		echo "<li>Learn More</li>";
+			        	} 
 		        	?>
-					
 					<li onclick="login()">Log in</li>
 					<div id="login" open="0">
 						<form action="login.php" method="POST">
@@ -76,13 +75,16 @@ $sub_list = array_unique($sub_list);
 					<li>Terms</li>
 				</ul>
 			</nav>
+
+			<!-- Main Content -->
 			<div id="content">
 				<div class="page_wrap">		
 					<div class="page center">
-
 						<div id="promo_headline" class="center">
 							<h1 class="center-text">We know you're only here for the free Wi-Fi</h1>
 						</div>
+
+						<!-- Search Box -->
 						<div id="searchbox" class="page">
 							<img id="index_logo" class="left" src="images/logo/logo_black.png" alt="wiFindr - Find free wi-fi near you" />
 							<form action="results.php" method="POST" name="search">
@@ -109,14 +111,16 @@ $sub_list = array_unique($sub_list);
 						</div>
 					</div>
 				</div>
+
+				<!-- Header -->
 				<div id="header_wrap">
 					<div id="header" class="center">
 						<a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png" alt="Open Menu"/></a>
 					</div>
 				</div>
-				
-			</div>
-			
+			</div
+
+			<!-- Footer -->
 			<div id="footer_wrap">
 				<div id="footer" class="page center">
 					<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
@@ -125,8 +129,5 @@ $sub_list = array_unique($sub_list);
 			</div>
 		</div>
 		<div id="map-canvas" class="map-canvas"></div>
-
-		<script type="text/javascript" src="js/map.js"></script>
-		<script type="text/javascript" src="js/menu.js"></script>
 	</body>
 </html>
