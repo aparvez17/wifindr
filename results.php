@@ -111,7 +111,7 @@ $hot_count = $hotspots->rowCount();
 							<input type="submit" value="Login" />
 						</form>
 					</div>
-					<a href="register.html"><li>Create an account</li></a>
+					<a href="register.php"><li>Create an account</li></a>
 					<li>Learn More</li>
 					<li>Privacy</li>
 					<li>Terms</li>
