@@ -26,7 +26,16 @@ $sub_list = array_unique($sub_list);
 		<meta property="og:title" content="wiFindr - Join the Free Wi-Fi Revolution">
         <meta property="og:image" content="images/logo/logo_black.png">
         <meta property="og:description" content="wiFindr lets you discover and rate free wi-fi hotspots.">
+
         <link rel="apple-touch-icon-precomposed" href="images/icons/icon_mobile.png"/>
+        <link rel="apple-touch-startup-image" href="images/splash.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <link rel="manifest" href="manifest.json">
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="icon" sizes="192x192" href="images/icons/icon_mobile.png">
+
 		<title>wiFindr - Find free wi-fi near you</title>
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">

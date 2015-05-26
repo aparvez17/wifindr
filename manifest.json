@@ -1,0 +1,13 @@
+{
+  "short_name": "wiFindr",
+  "name": "wiFindr - Find Free Wi-Fi",
+  "icons": [
+    {
+      "src": "images/icons/icon_mobile.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.php",
+  "display": "standalone"
+}
