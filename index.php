@@ -65,7 +65,7 @@ include 'includes/index.inc';
 		        		echo "<li><h3><b>Hi! ".$username."</b></h3></li>";
 		        	}
 		        	else{
-		        		echo '<li onclick="login()">Log in</li>'
+		        		echo '<li onclick="login()">Log in</li>';
 		        	}	 
 		        	?>
 					<div id="login" open="0">
