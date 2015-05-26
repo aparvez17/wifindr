@@ -1,61 +1,56 @@
 <?php
 include 'dbconnect.inc';
 include 'login.php';
-
-$h_id = htmlspecialchars($_GET['id']);
-
-try{
-	$hotspot_data = $pdo->prepare('SELECT * FROM hotspots WHERE id=:id');
-}
-catch (PDOException $e){
-	echo $e->getMessage();
-} 
-
-$hotspot_data->bindValue(':id', $h_id);
-$hotspot_data->execute();
-$hotspot_data = $hotspot_data -> fetch();
-
-try{
-	$review_data = $pdo->prepare('SELECT * FROM reviews WHERE hotspot_id=:id ORDER BY date desc');
-	$review_data->bindValue(':id', $h_id);
-}
-catch (PDOException $e){
-	echo $e->getMessage();
-} 
-$review_data->execute();
-
-$ratings = $review_data->fetchAll(PDO::FETCH_COLUMN, 5);
-
-$num_ratings = count($ratings); 
-if($num_ratings == 0){
-	$avg_rating = "-";
-}
-else{
-	$avg_rating = number_format(array_sum($ratings) / $num_ratings, 2);
-}
-$review_data->execute();
+include 'includes/hotspot.inc';
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+
+		<!-- Social Media Meta Data -->
 		<meta name="description" content="View and review a hotspot.">
 		<meta property="og:title" content="Wifindr - Join the Free Wi-Fi Revolution">
         <meta property="og:image" content="images/logo/logo_black.png">
         <meta property="og:description" content="Wifindr lets you discover and rate free wi-fi hotspots.">
+
+        <!-- Mobile Meta Data  -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        	<!-- iOS  -->
+        <link rel="apple-touch-icon-precomposed" href="images/icons/icon_mobile.png"/>
+        <link rel="apple-touch-startup-image" href="images/splash.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        	<!-- Android  -->
+        <link rel="manifest" href="manifest.json">
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="icon" sizes="192x192" href="images/icons/icon_mobile.png">
+        
 		<title>wiFindr - Search Results</title>
+
+		<!-- Stylesheets  -->
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
 		<link rel="stylesheet" href="css/mobile.css" type="text/css">
+
+		<!-- Online Fonts  -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+		<!-- External Javascript Files  -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     	<script type="text/javascript" src="js/map.js"></script>
+    	<script type="text/javascript" src="js/menu.js"></script>
+
 	</head>
 	<body onload="loadMap(<?php echo $hotspot_data['latitude'] ?>, <?php echo $hotspot_data['longitude']?>)">
 		<div id="wrapper">
+
+			<!-- Navigation Menu -->
 			<nav id="menu_wrap" class="menu-closed" active="0">
 				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
 				<h3 class="center-text padding30">MENU</h3>
@@ -74,12 +69,16 @@ $review_data->execute();
 					<li>Terms</li>
 				</ul>
 			</nav>
+
+			<!-- Header -->
 			<div id="header_wrap" class="yellow_bg">
 	            <div id="header" class="center">
 	                <a href="index.php"><img src="images/logo/logo_white.png" class="left header-logo" alt="wiFindr"></a>
 	                <a href="javascript:void(0);" id="menu_icon" class="right" onclick="menu()"><img src="images/icons/menu_icon.png" alt="Open Menu"/></a>
 	            </div>
 	        </div>
+
+	        <!-- Hotspot Overview-->
 			<div id="content">
 		        <div class="yellow_bg wrap100">
 			        <div class="page center padding30">
@@ -105,6 +104,7 @@ $review_data->execute();
 			        </div>
 		    	</div>
 
+		    	<!-- Add A Rating -->
 		        <div class="page center padding30">
 		        	<h3>Add a review</h3>
 		        		<form method='POST' action='review.php' id="review">
@@ -145,7 +145,8 @@ $review_data->execute();
 		        	?>
 		        </div>
 		    </div>
-		    <br class="clear">
+		    
+		    <!-- Footer -->
 		    <div id="footer_wrap">
 				<div id="footer" class="page center">
 					<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
@@ -153,9 +154,5 @@ $review_data->execute();
 				</div>
 			</div>
 		</div>
-
-
-        <script type="text/javascript" src="js/menu.js"></script>
-
 	</body>
 </html>
