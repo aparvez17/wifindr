@@ -35,7 +35,6 @@ else{
 }
 $review_data->execute();
 
-	
 ?>
 <!DOCTYPE html>
 <html lang="en">

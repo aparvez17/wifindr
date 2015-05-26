@@ -1,4 +1,20 @@
-Student Information:
+a) Student Information:
 
-Asad Parvez 	n8881014
-Daniel Isserow	n9196722
+	Asad Parvez 		n8881014
+	Daniel Isserow		n9196722
+
+
+b) Our Site is hosted by [Daniel Isserow: n9196722]
+
+c) Add on Tasks
+
+	1. Maps
+	2. Mobile-ready design
+
+	Challenge Task
+	CSV Upload
+
+d) Statement of Contribution
+
+	Asad Parvez		50%	
+	Daniel Isserow		50%
