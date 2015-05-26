@@ -75,11 +75,13 @@ include 'includes/index.inc';
 						</form>
 					</div>
 					<a href="register.php"><li>Create an account</li></a>
-					<li>Learn More</li>
+					<a href="hotspot.php?id=7"><li>Example Hotspot Page</li></a>
 					<li>Privacy</li>
 					<li>Terms</li>
 					<?php
-					echo '<a href="logout.php"><li>logout</li></a>';
+					if (isset($_SESSION['username'])){
+						echo '<a href="logout.php"><li>logout</li></a>';
+					}
 					?>
 				</ul>
 			</nav>
