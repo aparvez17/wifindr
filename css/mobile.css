@@ -1,13 +1,20 @@
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   .wrapper{
     width: auto;
 	}
   .page{
-  	width: inherit;
+  	width: auto;
+    padding: 30px;
   }
   #header, #footer{
   	width: auto;
   	padding: 0px 20px 0px 20px;
+  }
+  #promo_headline{
+    margin-top:100px;
+  }
+  .search_select{
+    width: 28%;
   }
   #searchbox{
   	width: 100%;
@@ -27,6 +34,9 @@
   	width: 45%;
   	min-width: 200px;
   }
+  .search_select{
+    width: 24%;
+  }
 
 }
 @media (max-width: 700px) {
@@ -37,6 +47,31 @@
   }
   .page{
     padding: 20px;
+  }
+  #promo_headline{
+    width: 100%;
+    margin-top: 100px;
+  }
+   #searchbox{
+    margin-top: 30px;
+  }
+  #searchbox input{
+    display: block;
+  }
+  #searchbox img{
+    margin: 0px;
+  }
+  #geolocation{
+    margin: 10px!important;
+    float: left;
+  }
+  #index_search{
+    margin: 10px;
+  }
+  .search_select{
+    margin-top: 20px;
+    margin-left: 0px;
+    width: 100%;
   }
 }
 @media (max-width: 600px){
@@ -50,5 +85,10 @@
   .register-heading{
     font-size: 2.6em;
   }
-
+  #promo_headline{
+    margin-top: 80px;
+  }
+  h1{
+    font-size: 2em;
+  }
 }

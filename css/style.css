@@ -190,7 +190,7 @@ h3{
 	height: auto;
 }
 #searchbox img{
-	margin-top: 8px;
+	margin-top: -2px;
 }
 #searchbox input[type=image]{
 	outline: none;
@@ -208,6 +208,7 @@ background-color: rgba(235, 231, 63, 1);
 	cursor: pointer;
 	margin-left: 30px;
 	opacity: 0.8;
+	padding: 10px;
 }
 #geolocation:hover{
 	opacity: 1;
@@ -218,7 +219,7 @@ background-color: rgba(235, 231, 63, 1);
 	border-radius: 3px;
 	padding: 8px;
 	margin: 7px 0px 0px 20px; 
-	width:300px;
+	width:330px;
 }
 #search-bar:focus{
 	border: 2px solid #EBE73F;
