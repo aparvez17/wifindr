@@ -61,12 +61,10 @@ $sub_list = array_unique($sub_list);
 						$username = $_SESSION['username'];
 		        		echo "<li><h3><b>Hi! ".$username."</b></h3></li>";
 		        	}
-					else
-						
-	        		 
+		        		 
 		        	?>
 					
-					
+					<li onclick="login()">Log in</li>
 					<div id="login" open="0">
 						<form action="login.php" method="POST">
 							<input type="text" placeholder="Email" name="username"/>
