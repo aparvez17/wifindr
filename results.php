@@ -1,10 +1,13 @@
 <?php
 include 'dbconnect.inc';
-include('login.php');
+include 'login.php';
 $selected_suburb = $_POST['select_suburb'];
-$rating_sort = $_POST['sort_rating'];
+$sent_rating = $_POST['sort_rating'];
 $usr_latitude = $_POST['latitude'];
 $usr_longitude = $_POST['longitude'];
+
+$search_message = "";
+$case = 0;
 
 if($usr_latitude != ""){
 	$hotspots = $pdo->prepare('SELECT * FROM hotspots');
@@ -20,32 +23,36 @@ if($usr_latitude != ""){
 			$hotspots = array_push($id_array, $hotspot['id']);
 		}
 	}
-	$hotspots = $pdo->prepare('SELECT * FROM `hotspots` WHERE `id` IN ('.implode(',', array_map('intval', $id_array)).')');
+
+	$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE id IN ('.implode(',', array_map('intval', $id_array)).')');
 	$hotspots->execute();
+	$case = 1;
 }
 else{
 	if($selected_suburb != ""){
-		if($rating_sort == "rank"){
-			$hotspots = $pdo->prepare('SELECT * FROM hotspots INNER JOIN reviews ON hotspots.id = reviews.hotspot_id WHERE hotspots.suburb LIKE :searched ORDER BY AVG(reviews.rating) DESC');
-		}
-		else if($rating_sort == "number"){
-
+		if($sent_rating != ""){
+			$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched AND hotspot_rating > :sent_rating');
+			$hotspots->bindValue(':searched', "%".$selected_suburb."%");
+			$hotspots->bindValue(':sent_rating', $sent_rating);
+			$case = 2;		
 		}
 		else{
 			$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE suburb LIKE :searched');
 			$hotspots->bindValue(':searched', "%".$selected_suburb."%");
+			
+			$case = 3;	
 		}
-	}
-	else if($selected_suburb == "" && $rating_sort == "" && $usr_latitude == ""){
-		$hotspots = $pdo->prepare('SELECT * FROM hotspots');
 	}
 	else{
-		if($rating_sort == "rank"){
-			$hotspots = $pdo->prepare('SELECT * FROM hotspots INNER JOIN reviews hotspots.id = reviews.hotspot_id ORDER BY AVG(reviews.rating) DESC');
-			$hotspots->bindValue(':searched', "%".$selected_suburb."%");
+		if($sent_rating != ""){
+			$hotspots = $pdo->prepare('SELECT * FROM hotspots WHERE hotspot_rating > :sent_rating');
+			$hotspots->bindValue(':sent_rating', $sent_rating);
+			$case = 4;
 		}
-		else if($rating_sort == "number"){
-		}	
+		else{
+			$hotspots = $pdo->prepare('SELECT * FROM hotspots');
+			$case = 5;
+		}
 	}
 	$hotspots->execute();
 
@@ -53,10 +60,13 @@ else{
 	$longitude = $results['longitude'];
 	$latitude = $results['latitude'];
 	$hotspots->execute();
+
 }
 
 $hotspots->execute();
 $hot_count = $hotspots->rowCount();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -114,30 +124,12 @@ $hot_count = $hotspots->rowCount();
 	            </div>
 	        </div>
 	        <div id="content">
-				<?php
-				
-				?>
 		        <div id="map-canvas" class="map-canvas-short"></div>
 		        <div class="page center padding30">
-		        	<h2><?php 
-			        	if($usr_latitude != ""){
-			        		$num = count($id_array);
-			        		echo "We found ", $num," hotspots close by.";
-			        	}
-			        	else if($selected_suburb == "" && $rating_sort == "" && $usr_latitude == ""){
-			        		echo "Showing all results";
-			        	}
-			        	else{
-			        		if($hot_count > 1){
-			        		echo "We found ",$hot_count," hotspots in ", $selected_suburb;
-				        	}
-				        	else if($hot_count == 1){
-				        		echo "We found 1 hotspot in ", $selected_suburb;
-				        	}
-				        	else{
-				        		echo "We couldn't find any hotspots in ", $selected_suburb;
-				        	}
-			        	}
+		        	<h2>
+		        		<?php 
+			        	include "search_messages.php";
+			        	echo $search_message;
 		        		?>
 		        	</h2>
 		        	<div id="results-wrap">
