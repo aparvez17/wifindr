@@ -36,6 +36,7 @@ $review_data->execute();
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
+		<link rel="stylesheet" href="css/mobile.css" type="text/css">
 		<link href='http://fonts.googl  eapis.com/css?family=Open+Sans:700,300,600,400' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -49,9 +50,9 @@ $review_data->execute();
 				<ul>
 					<li onclick="login()">Log in</li>
 					<div id="login" open="0">
-						<form>
-							<input type="text" placeholder="Email" />
-							<input type="password" placeholder="Password" />
+						<form action="login.php" method="POST">
+							<input type="text" placeholder="Email" name="username"/>
+							<input type="password" placeholder="Password" name="password" />
 							<input type="submit" value="Login" />
 						</form>
 					</div>
@@ -74,7 +75,7 @@ $review_data->execute();
 			        	<div id="hotspot_title">
 			        		<div class="left">
 					        	<h2><?php echo $hotspot_data['name']; ?></h2>
-					        	<h3><?php echo $hotspot_data['address']; ?></h3>
+					        	<h3 id="hotspot_address"><?php echo $hotspot_data['address']; ?></h3>
 				        	</div>
 				        	<div id="rating_overview" class="right">
 				        		<h2>4.5/5</h2>
@@ -111,24 +112,26 @@ $review_data->execute();
 		        	<?php
 		        		foreach($review_data as $review){
 		        			echo "<div class='user-review'>
-		        					<div class='user-rating center-text'>
-		        					<h2>",$review['rating'],"/5</h2>
-		        					</div>
 		        					<h3>",$review['person_name'],"</h3>
 		        					<p>",$review['review_text'],"</p>
+		        					<div class='user-rating'>
+		        					<h2>",$review['rating'],"/5</h2>
+		        					</div>
 		        					<div class='timestamp'>",$review['date'],"</div>
 		        					</div>";
 		        		}    
 		        	?>
 		        </div>
 		    </div>
-	       	<div id="footer_wrap">
+		    <br class="clear">
+		    <div id="footer_wrap">
 				<div id="footer" class="page center">
 					<img class="left" src="images/logo/footer_icon.png" alt="wiFindr" />
 					<p id="copyright" class="right">&copy; wiFindr 2015</p>
 				</div>
 			</div>
 		</div>
+
 
         <script type="text/javascript" src="js/menu.js"></script>
 	</body>

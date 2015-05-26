@@ -55,9 +55,9 @@ $sub_list = array_unique($sub_list);
 					
 					<li onclick="login()">Log in</li>
 					<div id="login" open="0">
-						<form>
-							<input type="text" placeholder="Email" />
-							<input type="password" placeholder="Password" />
+						<form action="login.php" method="POST">
+							<input type="text" placeholder="Email" name="username"/>
+							<input type="password" placeholder="Password" name="password" />
 							<input type="submit" value="Login" />
 						</form>
 					</div>

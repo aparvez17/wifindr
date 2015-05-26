@@ -18,7 +18,6 @@ if($usr_latitude != ""){
 		$distance = sqrt(pow(($hotspot['latitude']-$usr_latitude), 2)+pow(($hotspot['longitude']-$usr_longitude), 2));
 		if ($distance < 0.015){
 			$hotspots = array_push($id_list, $hotspot['id']);
-			
 		}
 	}
 	$hotspots = $pdo->query('SELECT * FROM `hotspots` WHERE `id` IN (' . implode(',', array_map('intval', $id_list)) . ')');
@@ -68,7 +67,14 @@ $hot_count = $hotspots->rowCount();
 		<meta property="og:title" content="wiFindr - Join the Free Wi-Fi Revolution">
         <meta property="og:image" content="images/logo/logo_black.png">
         <meta property="og:description" content="wiFindr lets you discover and rate free wi-fi hotspots.">
-		<title>wiFindr - Results for <?php echo $searched; ?></title>
+		<title>wiFindr - Results for 
+			<?php if($selected_suburb != ""){
+				echo $selected_suburb;
+				}
+				else{
+					echo "your location";
+				}
+				 ?></title>
 		<link rel="stylesheet" href="css/reset.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/animation.css" type="text/css">
@@ -89,9 +95,9 @@ $hot_count = $hotspots->rowCount();
 				<ul>
 					<li onclick="login()">Log in</li>
 					<div id="login" open="0">
-						<form>
-							<input type="text" placeholder="Email" />
-							<input type="password" placeholder="Password" />
+						<form action="login.php" method="POST">
+							<input type="text" placeholder="Email" name="username"/>
+							<input type="password" placeholder="Password" name="password" />
 							<input type="submit" value="Login" />
 						</form>
 					</div>

@@ -7,9 +7,12 @@ body{
 #wrapper{
 	min-height: 100vh;
 	position: relative;
+	overflow-x:hidden;
 }
 #content{
    padding-bottom:70px;
+   overflow: hidden;
+   height: auto;
 }
 .left{
 	float:left;
@@ -52,6 +55,8 @@ h3{
 .page{
 	width: 1024px;
 	position: relative;
+	overflow: hidden;
+	height: auto;
 }
 .halfpage{
 	width:50%;
@@ -269,7 +274,7 @@ background-color: rgba(235, 231, 63, 1);
 	width:400px;
 	margin: 30px 0px 30px 0px;
 }
-#registration input[type=text], #registration input[type=email], #registration input[type=password]{
+#registration input[type=text], #registration input[type=email], #registration input[type=password], #registration input[type=date]{
     display: block;
     width: 400px;
     font-size: 16px;
@@ -298,15 +303,17 @@ background-color: rgba(235, 231, 63, 1);
 	background-color:#F74B4B;
 }
 .register-heading{
-	padding: 20px 0px 0px 0px;
+	padding: 20px 30px 0px 30px
 }
 .register-wrap{
 	width:422px;
+	position: relative;
+	text-align: center;
 }
 .result{
 	padding: 20px;
-	height: 200px;
-	width: 190px;
+	height: 250px;
+	width: 235px;
 	float:left;
 	background-color: #EBE73F;
 	color: #fff;
@@ -315,6 +322,8 @@ background-color: rgba(235, 231, 63, 1);
 	border-radius: 4px;
 	border: 1px solid #D5D12E;
 	border-bottom: 3px solid #D5D12E;
+	box-sizing: border-box;
+
 }
 .result:hover{
 	background-color: #F27A45;
@@ -323,12 +332,14 @@ background-color: rgba(235, 231, 63, 1);
 }
 #results-wrap{
 	margin-top: 30px;
-	overflow: auto;
+	overflow: hidden;
+	height: auto;
 }
 #hotspot_title{
-	padding: 20px 40px 0px 40px;
-	min-height:130px;
+	padding: 20px 40px 40px 40px;
 	background-color: #222222;
+	overflow: hidden;
+   	height: auto;
 }
 #hotspot_title, #hotspot_title h2{
 	color: #fff;
@@ -336,6 +347,12 @@ background-color: rgba(235, 231, 63, 1);
 #hotspot_title h3{
 	max-width: 600px;
 	line-height: 1.5;
+}
+#hotspot_address{
+	margin-bottom: 20px;
+}
+#rating_overview{
+	margin-left: 20px;
 }
 .user-review:nth-of-type(1){
 	margin-top: 30px;
@@ -347,17 +364,17 @@ background-color: rgba(235, 231, 63, 1);
 	border-radius: 3px;
 	position: relative;
 	min-height: 76px;
+	overflow: hidden;
+	height: auto;
 }
 .user-review p{
 	margin-top: 7px;
 	line-height: 1.4em;
 	font-size: 0.9em;
-	width: 70%;
 }
 .user-rating{
 	height:auto;
-	float: right;
-	width: 25%;
+	float: left;
 }
 .user-rating h2{
 	font-family: "Open Sans",sans-serif;
