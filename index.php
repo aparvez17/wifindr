@@ -76,8 +76,6 @@ include 'includes/index.inc';
 					</div>
 					<a href="register.php"><li>Create an account</li></a>
 					<a href="hotspot.php?id=7"><li>Example Hotspot Page</li></a>
-					<li>Privacy</li>
-					<li>Terms</li>
 					<?php
 					if (isset($_SESSION['username'])){
 						echo '<a href="logout.php"><li>logout</li></a>';

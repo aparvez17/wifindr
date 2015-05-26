@@ -55,7 +55,16 @@ include 'includes/hotspot.inc';
 				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
 				<h3 class="center-text padding30">MENU</h3>
 				<ul>
-					<li onclick="login()">Log in</li>
+					
+					<?php 
+		        	if (isset($_SESSION['username'])){
+						$username = $_SESSION['username'];
+		        		echo "<li><h3><b>Hi! ".$username."</b></h3></li>";
+		        	}
+		        	else{
+		        		echo '<li onclick="login()">Log in</li>';
+		        	}	 
+		        	?>
 					<div id="login" open="0">
 						<form action="login.php" method="POST">
 							<input type="text" placeholder="Email" name="username"/>
@@ -64,11 +73,15 @@ include 'includes/hotspot.inc';
 						</form>
 					</div>
 					<a href="register.php"><li>Create an account</li></a>
-					<li>Learn More</li>
-					<li>Privacy</li>
-					<li>Terms</li>
+					<a href="hotspot.php?id=7"><li>Example Hotspot Page</li></a>
+					<?php
+					if (isset($_SESSION['username'])){
+						echo '<a href="logout.php"><li>logout</li></a>';
+					}
+					?>
 				</ul>
 			</nav>
+
 
 			<!-- Header -->
 			<div id="header_wrap" class="yellow_bg">

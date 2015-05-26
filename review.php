@@ -1,5 +1,6 @@
 <?php
 include 'dbconnect.inc';
+session_start();
 date_default_timezone_set('Australia/Brisbane');
 
 $time = $date = date('Y-m-d h:i:s a', time());

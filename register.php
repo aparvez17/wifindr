@@ -1,4 +1,5 @@
 <?php
+session_start();
 	require('dbconnect.inc');
     // If the values are posted, insert them into the database.
     if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])){
@@ -46,20 +47,33 @@
                 <a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
                 <h3 class="center-text padding30">MENU</h3>
                 <ul>
-                    <li onclick="login()">Log in</li>
+                    
+                    <?php 
+                    if (isset($_SESSION['username'])){
+                        $username = $_SESSION['username'];
+                        echo "<li><h3><b>Hi! ".$username."</b></h3></li>";
+                    }
+                    else{
+                        echo '<li onclick="login()">Log in</li>';
+                    }    
+                    ?>
                     <div id="login" open="0">
-                        <form action="login.php" method = "POST">
-                            <input name = "username" type="text" placeholder="Email" />
-                            <input name = "password" type="password" placeholder="Password" />
+                        <form action="login.php" method="POST">
+                            <input type="text" placeholder="Email" name="username"/>
+                            <input type="password" placeholder="Password" name="password" />
                             <input type="submit" value="Login" />
                         </form>
                     </div>
                     <a href="register.php"><li>Create an account</li></a>
-                    <li>Learn More</li>
-                    <li>Privacy</li>
-                    <li>Terms</li>
+                    <a href="hotspot.php?id=7"><li>Example Hotspot Page</li></a>
+                    <?php
+                    if (isset($_SESSION['username'])){
+                        echo '<a href="logout.php"><li>logout</li></a>';
+                    }
+                    ?>
                 </ul>
             </nav>
+
             <div id="header_wrap" class="yellow_bg">
                 <div id="header" class="center">
                      <a href="index.php"><img src="images/logo/logo_white.png" class="left header-logo" alt="wiFindr"></a>

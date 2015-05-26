@@ -32,7 +32,7 @@ if($num_ratings == 0){
 	$avg_rating = "-";
 }
 else{
-	$avg_rating = number_format(array_sum($ratings) / $num_ratings, 2);
+	$avg_rating = $hotspot_data['hotspot_rating'];
 }
 $review_data->execute();
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2015 at 12:45 PM
+-- Generation Time: May 26, 2015 at 03:49 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -42,19 +42,19 @@ CREATE TABLE IF NOT EXISTS `hotspots` (
 
 INSERT INTO `hotspots` (`id`, `name`, `address`, `suburb`, `latitude`, `longitude`, `hotspot_rating`) VALUES
 (1, 'Annerley Library Wifi', '450 Ipswich Road', 'Annerley, 4103', '-27.5094229', '153.0333218', '0.00'),
-(2, 'Ashgrove Library Wifi', '87 Amarina Avenue', 'Ashgrove, 4060', '-27.4439463', '152.9870981', '0.00'),
-(3, 'Banyo Library Wifi', '284 St. Vincents Road', 'Banyo, 4014', '-27.3739664', '153.0783234', '0.00'),
+(2, 'Ashgrove Library Wifi', '87 Amarina Avenue', 'Ashgrove, 4060', '-27.4439463', '152.9870981', '4.00'),
+(3, 'Banyo Library Wifi', '284 St. Vincents Road', 'Banyo, 4014', '-27.3739664', '153.0783234', '3.00'),
 (4, 'Booker Place Park', 'Birkin Rd & Sugarwood St', 'Bellbowrie', '-27.5635300', '152.8937200', '0.00'),
 (5, 'Bracken Ridge Library Wifi', 'Corner Bracken and Barrett Street', 'Bracken Ridge, 4017', '-27.3179726', '153.0378735', '0.00'),
 (6, 'Brisbane Botanic Gardens', 'Mt Coot-tha Rd', 'Toowong', '-27.4772400', '152.9759900', '0.00'),
-(7, 'Brisbane Square Library Wifi', 'Brisbane Square, 266 George Street', 'Brisbane, 4000', '-27.4709117', '153.0224598', '4.67'),
+(7, 'Brisbane Square Library Wifi', 'Brisbane Square, 266 George Street', 'Brisbane, 4000', '-27.4709117', '153.0224598', '5.00'),
 (8, 'Bulimba Library Wifi', 'Corner Riding Road & Oxford Street', 'Bulimba, 4171', '-27.4520309', '153.0628242', '0.00'),
 (9, 'Calamvale District Park', 'Formby & Ormskirk Sts', 'Calamvale', '-27.6215200', '153.0366500', '0.00'),
 (10, 'Carina Library Wifi', 'Corner Mayfield Road & Nyrang Street', 'Carina, 4152', '-27.4916931', '153.0912127', '0.00'),
 (11, 'Carindale Library Wifi', 'The Home and Leisure Centre, Corner Carindale Street  & Banchory Court, Westfield Carindale Shopping Centre', 'Carindale, 4152', '-27.5047593', '153.1003965', '0.00'),
 (12, 'Carindale Recreation Reserve', 'Cadogan and Bedivere Sts', 'Carindale', '-27.4970000', '153.1110500', '0.00'),
 (13, 'Chermside Library Wifi', '375 Hamilton  Road', 'Chermside, 4032', '-27.3856032', '153.0349028', '0.00'),
-(14, 'City Botanic Gardens Wifi', 'Alice Street', 'Brisbane City', '-27.4756100', '153.0300500', '0.00'),
+(14, 'City Botanic Gardens Wifi', 'Alice Street', 'Brisbane City', '-27.4756100', '153.0300500', '2.00'),
 (15, 'Coopers Plains Library Wifi', '107 Orange Grove Road', 'Coopers Plains, 4108', '-27.5651051', '153.0403183', '0.00'),
 (16, 'Corinda Library Wifi', '641 Oxley Road', 'Corinda, 4075', '-27.5388024', '152.9809091', '0.00'),
 (17, 'D.M. Henderson Park', 'Granadilla St', 'MacGregor', '-27.5774500', '153.0760300', '0.00'),
@@ -111,19 +111,17 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   `rating` decimal(10,1) NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`rev_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `reviews`
 --
 
 INSERT INTO `reviews` (`rev_id`, `hotspot_id`, `person_id`, `person_name`, `review_text`, `rating`, `date`) VALUES
-(2, 7, 1, 'Jimmy Pots', 'The Brisbane City library wi-fi is great! No drop outs of course and super fast! reaching about 8Mb/s.', '5.0', '2015-05-21 07:23:23'),
-(3, 7, 2, 'Alfred Hitchcock', 'Great wi-fi, no problems at all, super fast and reliable. Some of my best work has been done here and it''s all thanks to their awesome wi-fi.', '4.5', '2015-05-20 04:09:13'),
-(4, 7, 3, 'Albert Einstein', 'Great wi-fi, great environment. Using the library''s super fast wi-fi I was able to develop my special theory of relativity, marvellous. ', '4.5', '2015-05-18 00:00:00'),
-(5, 14, 4, 'Nikola Tesla', 'Wow, technology has come a long way! The wi-fi at Brisbane''s Botanic Gardens is truly a marvel.', '4.9', '2015-05-19 07:22:25'),
-(6, 34, 5, 'Jim', 'Horrible Wi-Fi', '3.0', '2015-05-20 04:19:25'),
-(7, 34, 5, 'Jimm', 'Really Really Bad', '2.0', '2015-05-19 00:00:00');
+(24, 7, 0, 'asad@example.com', 'Wow this, place has really great wi-Fi. I could go on and on about how great it is but how about I just leave it with a rating?', '5.0', '2015-05-26 11:44:22'),
+(25, 14, 0, 'asad@example.com', 'This one''s a bit out of the way for me, the signal strength is often quite low. Not a big fan :S', '2.0', '2015-05-26 11:45:35'),
+(26, 2, 0, 'asad@example.com', 'Love coming here on the weekends great wi-fi, great environment to study!', '4.0', '2015-05-26 11:46:31'),
+(27, 3, 0, 'asad@example.com', 'Not a big fan, the place smells and there''s always toddlers running around making noise. The wi-fi is average.', '3.0', '2015-05-26 11:47:17');
 
 -- --------------------------------------------------------
 
@@ -140,19 +138,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `Sex`, `Birth`, `username`, `email`, `password`, `admin`) VALUES
-(1, '', '0000-00-00', 'Danny', 'dannyiss@gmail.com', 'poke8288', 0),
-(2, '', '0000-00-00', 'Bruh', 'danny2@gmail.com', 'b85ac2a87690baac2c4bdeb2ce14d419', 0),
-(3, 'male', '0000-00-00', 'asdasd', 'asdasd', 'a8f5f167f44f4964e6c998dee827110c', 0),
-(4, 'female', '2015-05-06', 'asdfasd', 'asdfasdf', '6a204bd89f3c8348afd5c77c717a097a', 0),
-(5, 'male', '2015-05-01', 'Asad', 'email@example.com', '$2y$10$UM8/N1uoCwj24O9zYOVzTu/z3i3614CvVoC61NKNA.pwvfzb6b5HK', 0);
+(33, 'male', '2015-05-21', '', 'dannyiss@gmail.com', 'b85ac2a87690baac2c4bdeb2ce14d419', 0),
+(34, 'male', '2015-05-21', 'andy', 'andy@email.com', '5f4dcc3b5aa765d61d8327deb882cf99', 0),
+(35, 'male', '2015-05-13', 'alex', 'alex@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 0),
+(36, 'male', '2015-05-06', 'Asad', 'asad@example.com', '5f4dcc3b5aa765d61d8327deb882cf99', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
