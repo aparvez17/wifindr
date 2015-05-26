@@ -1,7 +1,10 @@
 <?php
+
+session_start();
 include 'dbconnect.inc';
 include 'login.php';
 include 'includes/index.inc';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,13 +58,15 @@ include 'includes/index.inc';
 				<a href="javascript:void(0);" id="close_menu" class="left" onclick="menu()"><img src="images/icons/arrow.png" alt="Close Menu"/></a>
 				<h3 class="center-text padding30">MENU</h3>
 				<ul>
-					<?php 
-			        	echo $_SESSION["username"];
-			        	if (isset($_SESSION['username'])){
-			        		echo "<li>Learn More</li>";
-			        	} 
-		        	?>
 					<li onclick="login()">Log in</li>
+					<?php 
+			        	if (isset($_SESSION['username'])){
+							$username = $_SESSION['username'];
+			        		echo "<li><h3><b>Hi! ".$username."</b></h3></li>";
+			        	}
+						else    		 
+		        	?>
+
 					<div id="login" open="0">
 						<form action="login.php" method="POST">
 							<input type="text" placeholder="Email" name="username"/>
